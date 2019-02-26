@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Photos
+import PhotosUI
 
 class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
