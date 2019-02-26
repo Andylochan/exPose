@@ -16,11 +16,22 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     
     let imagePicker = UIImagePickerController()
     
-    @IBAction func loadImageButtonTapped(_ sender: UIButton) {
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
+    @IBAction func loadImageButtonTapped(_ sender: AnyObject) {
+//        imagePicker.allowsEditing = false
+//        imagePicker.sourceType = .photoLibrary
+//
+//        present(imagePicker, animated: true, completion: nil)
+        let image = UIImagePickerController()
+        image.delegate = self
         
-        present(imagePicker, animated: true, completion: nil)
+        image.sourceType = UIImagePickerController.SourceType.photoLibrary
+        
+        image.allowsEditing = false
+        
+        self.present(image, animated: true)
+        {
+            //After it is complete
+        }
     }
     
     
@@ -50,19 +61,23 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         imagePicker.delegate = self
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        {
+            imageView.image = image
+        }
+        else
+        {
+            //Error message
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
     // MARK: - UIImagePickerControllerDelegate Methods
-    
+    /*
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage =     info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.contentMode = .scaleAspectFit
@@ -91,7 +106,7 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             
         })
         dismiss(animated: true, completion: nil)
-    }
+    } */
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
