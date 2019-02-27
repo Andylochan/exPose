@@ -119,14 +119,39 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="partialCurl" id="q3v-Hr-edP"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-Nh-hKW">
+                                <rect key="frame" x="50" y="82" width="275" height="448"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jaq-Pr-57F">
+                                <rect key="frame" x="50" y="559" width="84" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="loadImageButtonTapped:" destination="pgK-mU-huY" eventType="touchUpInside" id="XFO-qa-n29"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqO-CE-Tve">
+                                <rect key="frame" x="207" y="559" width="118" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="View Metadata"/>
+                                <connections>
+                                    <action selector="viewMetadata:" destination="pgK-mU-huY" eventType="touchUpInside" id="R0I-gp-akX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="bvS-7A-Erh"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="QUg-Nh-hKW" id="8o2-y5-K4q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xaj-Mc-ENa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="862" y="994"/>
+            <point key="canvasLocation" x="861.60000000000002" y="993.55322338830592"/>
         </scene>
         <!--Page3-->
         <scene sceneID="73T-vr-Vpa">
@@ -182,7 +207,7 @@
         <image name="XR Sort COPY" width="414" height="896"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Akl-ef-3Lz"/>
-        <segue reference="0WQ-Nt-NiW"/>
+        <segue reference="P7m-Ge-kOv"/>
+        <segue reference="q3v-Hr-edP"/>
     </inferredMetricsTieBreakers>
 </document>
