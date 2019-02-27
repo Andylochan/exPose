@@ -61,6 +61,8 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         imagePicker.delegate = self
     }
     
+    // MARK: - UIImagePickerControllerDelegate Methods
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
@@ -73,20 +75,6 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         }
         
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    // MARK: - UIImagePickerControllerDelegate Methods
-    /*
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage =     info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = pickedImage
-        }
-        
-        dismiss(animated: true, completion: nil)
-        
-        
         
         //Extract Metdadata/EXIF files
         let assetURL = info[UIImagePickerController.InfoKey.referenceURL] as! NSURL
@@ -105,8 +93,7 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             }
             
         })
-        dismiss(animated: true, completion: nil)
-    } */
+    }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
