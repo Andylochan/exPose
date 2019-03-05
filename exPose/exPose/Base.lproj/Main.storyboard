@@ -18,10 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="XR Sort COPY" translatesAutoresizingMaskIntoConstraints="NO" id="mgJ-J5-5R6">
-                                <rect key="frame" x="-19.5" y="-114.5" width="414" height="896"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZa-JT-B75">
                                 <rect key="frame" x="0.0" y="487" width="375" height="180"/>
                                 <constraints>
@@ -32,15 +28,20 @@
                                     <segue destination="pgK-mU-huY" kind="presentation" modalTransitionStyle="coverVertical" id="P7m-Ge-kOv"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImportScr" translatesAutoresizingMaskIntoConstraints="NO" id="LvZ-vn-MS0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="LvZ-vn-MS0" firstAttribute="bottom" secondItem="YZa-JT-B75" secondAttribute="bottom" id="CyG-oc-lXH"/>
                             <constraint firstItem="YZa-JT-B75" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IMA-fA-Rex"/>
                             <constraint firstItem="YZa-JT-B75" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="467" id="MFc-pF-3UH"/>
+                            <constraint firstItem="LvZ-vn-MS0" firstAttribute="leading" secondItem="YZa-JT-B75" secondAttribute="leading" id="Oex-EZ-yLt"/>
+                            <constraint firstItem="LvZ-vn-MS0" firstAttribute="trailing" secondItem="YZa-JT-B75" secondAttribute="trailing" id="P0Z-6r-HXS"/>
+                            <constraint firstItem="LvZ-vn-MS0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Skq-Pc-jEh"/>
                             <constraint firstItem="YZa-JT-B75" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Stx-zs-idN"/>
-                            <constraint firstItem="mgJ-J5-5R6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dQw-TW-udw"/>
-                            <constraint firstItem="mgJ-J5-5R6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="deb-aQ-Olw"/>
                             <constraint firstItem="YZa-JT-B75" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="q7g-Rn-AcA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -50,7 +51,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="Zhf-IZ-sVz" userLabel="Swipe Gesture Recognizer 1">
+                <swipeGestureRecognizer direction="left" id="Zhf-IZ-sVz" userLabel="Swipe Gesture Recognizer 1">
                     <connections>
                         <segue destination="tIn-gq-dHx" kind="presentation" modalTransitionStyle="flipHorizontal" id="mIK-nx-R5V"/>
                     </connections>
@@ -66,9 +67,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="XR Critque COPY" translatesAutoresizingMaskIntoConstraints="NO" id="fBz-rL-I8K">
-                                <rect key="frame" x="-19.5" y="-114.5" width="414" height="896"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3t-yj-fX2">
                                 <rect key="frame" x="0.0" y="487" width="375" height="180"/>
                                 <constraints>
@@ -76,16 +74,33 @@
                                     <constraint firstAttribute="width" constant="375" id="u4c-UI-D13"/>
                                 </constraints>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="XR Sort COPY" translatesAutoresizingMaskIntoConstraints="NO" id="wb4-73-3yn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLe-IM-NyC">
+                                <rect key="frame" x="0.0" y="487" width="375" height="180"/>
+                                <connections>
+                                    <segue destination="qGP-my-tqd" kind="presentation" modalTransitionStyle="coverVertical" id="xpy-0p-oP4"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="b3t-yj-fX2" firstAttribute="trailing" secondItem="YUX-4S-zKv" secondAttribute="trailing" id="7xp-kf-Tn8"/>
+                            <constraint firstItem="wb4-73-3yn" firstAttribute="leading" secondItem="b3t-yj-fX2" secondAttribute="leading" id="8p5-MZ-doA"/>
+                            <constraint firstItem="wb4-73-3yn" firstAttribute="bottom" secondItem="YUX-4S-zKv" secondAttribute="bottom" id="CP7-11-I8H"/>
+                            <constraint firstItem="QLe-IM-NyC" firstAttribute="baseline" secondItem="b3t-yj-fX2" secondAttribute="baseline" id="ClB-7T-7rP"/>
+                            <constraint firstItem="QLe-IM-NyC" firstAttribute="trailing" secondItem="b3t-yj-fX2" secondAttribute="trailing" id="EHn-JA-9mc"/>
                             <constraint firstItem="b3t-yj-fX2" firstAttribute="leading" secondItem="YUX-4S-zKv" secondAttribute="leading" id="FKu-sS-jmU"/>
-                            <constraint firstItem="fBz-rL-I8K" firstAttribute="centerX" secondItem="nVe-ec-54r" secondAttribute="centerX" id="Sz3-lg-q3Z"/>
+                            <constraint firstItem="QLe-IM-NyC" firstAttribute="bottom" secondItem="wb4-73-3yn" secondAttribute="bottom" id="WtJ-y5-N6P"/>
+                            <constraint firstItem="QLe-IM-NyC" firstAttribute="top" secondItem="b3t-yj-fX2" secondAttribute="top" id="bbw-0n-kXX"/>
                             <constraint firstItem="b3t-yj-fX2" firstAttribute="bottom" secondItem="YUX-4S-zKv" secondAttribute="bottom" id="c84-bT-FxU"/>
                             <constraint firstItem="b3t-yj-fX2" firstAttribute="top" secondItem="YUX-4S-zKv" secondAttribute="top" constant="467" id="d6K-Wg-fI4"/>
-                            <constraint firstItem="fBz-rL-I8K" firstAttribute="centerY" secondItem="nVe-ec-54r" secondAttribute="centerY" id="ejY-Bd-afG"/>
+                            <constraint firstItem="QLe-IM-NyC" firstAttribute="firstBaseline" secondItem="b3t-yj-fX2" secondAttribute="firstBaseline" id="fvn-rR-ugy"/>
+                            <constraint firstItem="wb4-73-3yn" firstAttribute="top" secondItem="nVe-ec-54r" secondAttribute="top" id="jkc-gY-1uZ"/>
+                            <constraint firstItem="wb4-73-3yn" firstAttribute="trailing" secondItem="b3t-yj-fX2" secondAttribute="trailing" id="nTU-8e-aIj"/>
+                            <constraint firstItem="QLe-IM-NyC" firstAttribute="leading" secondItem="b3t-yj-fX2" secondAttribute="leading" id="nUy-Fg-cxP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YUX-4S-zKv"/>
                         <connections>
@@ -94,9 +109,9 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qs0-at-Dei" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="9VC-Vt-hVW" userLabel="Swipe Gesture Recognizer 1">
+                <swipeGestureRecognizer direction="left" id="9VC-Vt-hVW" userLabel="Swipe Gesture Recognizer 2">
                     <connections>
-                        <segue destination="Nyy-lY-Yor" kind="presentation" modalTransitionStyle="flipHorizontal" id="IDh-g3-ioQ"/>
+                        <segue destination="Nyy-lY-Yor" kind="presentation" modalTransitionStyle="flipHorizontal" id="6ko-1Q-dzJ"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -110,31 +125,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLn-9M-GqT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLn-9M-GqT">
                                 <rect key="frame" x="25" y="38" width="71" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="&lt;- Back"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="partialCurl" id="q3v-Hr-edP"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-Nh-hKW">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-Nh-hKW">
                                 <rect key="frame" x="50" y="82" width="275" height="448"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jaq-Pr-57F">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jaq-Pr-57F">
                                 <rect key="frame" x="50" y="559" width="84" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Pb5-Oe-fDC"/>
+                                    <constraint firstAttribute="width" constant="84" id="sSK-LJ-QvJ"/>
+                                </constraints>
                                 <state key="normal" title="Upload"/>
                                 <connections>
                                     <action selector="loadImageButtonTapped:" destination="pgK-mU-huY" eventType="touchUpInside" id="XFO-qa-n29"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqO-CE-Tve">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqO-CE-Tve">
                                 <rect key="frame" x="207" y="559" width="118" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="View Metadata"/>
                                 <connections>
@@ -143,6 +158,20 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Jaq-Pr-57F" firstAttribute="top" secondItem="wqO-CE-Tve" secondAttribute="top" id="04t-NP-paz"/>
+                            <constraint firstItem="Jaq-Pr-57F" firstAttribute="top" secondItem="QUg-Nh-hKW" secondAttribute="bottom" constant="29" id="2ip-Uj-ilX"/>
+                            <constraint firstItem="QUg-Nh-hKW" firstAttribute="leading" secondItem="bvS-7A-Erh" secondAttribute="leading" constant="50" id="6VT-TB-Gwe"/>
+                            <constraint firstItem="RLn-9M-GqT" firstAttribute="leading" secondItem="bvS-7A-Erh" secondAttribute="leading" constant="25" id="QwS-7r-c7I"/>
+                            <constraint firstItem="bvS-7A-Erh" firstAttribute="bottom" secondItem="Jaq-Pr-57F" secondAttribute="bottom" constant="58" id="W50-5E-dEE"/>
+                            <constraint firstItem="QUg-Nh-hKW" firstAttribute="centerX" secondItem="Q49-I0-Iiq" secondAttribute="centerX" id="XA1-RI-gQx"/>
+                            <constraint firstItem="Jaq-Pr-57F" firstAttribute="baseline" secondItem="wqO-CE-Tve" secondAttribute="firstBaseline" id="ZR5-Xh-Lzc"/>
+                            <constraint firstItem="QUg-Nh-hKW" firstAttribute="leading" secondItem="Jaq-Pr-57F" secondAttribute="leading" id="baT-Ah-be7"/>
+                            <constraint firstItem="QUg-Nh-hKW" firstAttribute="top" secondItem="RLn-9M-GqT" secondAttribute="bottom" constant="8" symbolic="YES" id="ecm-Fp-B3A"/>
+                            <constraint firstItem="QUg-Nh-hKW" firstAttribute="trailing" secondItem="wqO-CE-Tve" secondAttribute="trailing" id="gsY-zI-4Iz"/>
+                            <constraint firstItem="wqO-CE-Tve" firstAttribute="leading" secondItem="Jaq-Pr-57F" secondAttribute="trailing" constant="73" id="mAE-oj-3jA"/>
+                            <constraint firstItem="RLn-9M-GqT" firstAttribute="top" secondItem="bvS-7A-Erh" secondAttribute="top" constant="18" id="mWb-KT-8Wi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bvS-7A-Erh"/>
                     </view>
                     <connections>
@@ -151,7 +180,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xaj-Mc-ENa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="861.60000000000002" y="993.55322338830592"/>
+            <point key="canvasLocation" x="-490" y="1180"/>
+        </scene>
+        <!--Sort By Tile-->
+        <scene sceneID="OcN-4Q-RlZ">
+            <objects>
+                <viewController id="qGP-my-tqd" customClass="SortByTile" customModule="exPose" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I2q-ok-pXH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SortBlocks" translatesAutoresizingMaskIntoConstraints="NO" id="Dqc-3F-0my">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjN-Xu-TNj">
+                                <rect key="frame" x="318" y="31" width="50" height="50"/>
+                                <connections>
+                                    <segue destination="tIn-gq-dHx" kind="presentation" modalTransitionStyle="partialCurl" id="Ses-Sb-1kT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rUK-if-WSV" firstAttribute="trailing" secondItem="jjN-Xu-TNj" secondAttribute="trailing" constant="7" id="7ez-EW-3jT"/>
+                            <constraint firstItem="jjN-Xu-TNj" firstAttribute="leading" secondItem="rUK-if-WSV" secondAttribute="leading" constant="318" id="9Jw-Kp-yuB"/>
+                            <constraint firstItem="rUK-if-WSV" firstAttribute="bottom" secondItem="jjN-Xu-TNj" secondAttribute="bottom" constant="586" id="FSH-4M-FKD"/>
+                            <constraint firstItem="Dqc-3F-0my" firstAttribute="top" secondItem="I2q-ok-pXH" secondAttribute="top" id="GWd-VI-a8p"/>
+                            <constraint firstItem="Dqc-3F-0my" firstAttribute="bottom" secondItem="rUK-if-WSV" secondAttribute="bottom" id="Gcd-yZ-pVZ"/>
+                            <constraint firstItem="jjN-Xu-TNj" firstAttribute="top" secondItem="rUK-if-WSV" secondAttribute="top" constant="11" id="Ghu-7V-DJD"/>
+                            <constraint firstAttribute="trailing" secondItem="Dqc-3F-0my" secondAttribute="trailing" id="SvL-r3-Uau"/>
+                            <constraint firstItem="Dqc-3F-0my" firstAttribute="leading" secondItem="I2q-ok-pXH" secondAttribute="leading" id="vnZ-RG-Lf6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rUK-if-WSV"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KMI-Tn-4t1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861.60000000000002" y="1179.7601199400301"/>
         </scene>
         <!--Page3-->
         <scene sceneID="73T-vr-Vpa">
@@ -161,29 +226,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="XR Analyze COPY" translatesAutoresizingMaskIntoConstraints="NO" id="Ajn-Ha-1Di">
-                                <rect key="frame" x="-19.5" y="-114.5" width="414" height="896"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-Q5-Pqx">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-Q5-Pqx">
                                 <rect key="frame" x="0.0" y="487" width="375" height="180"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="8Lb-XC-bZ2"/>
-                                    <constraint firstAttribute="height" constant="180" id="ev8-M3-YV8"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="pgK-mU-huY" kind="presentation" modalTransitionStyle="coverVertical" id="Akl-ef-3Lz"/>
-                                </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="XR Critque COPY" translatesAutoresizingMaskIntoConstraints="NO" id="0Fu-f2-E2r">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="yt2-Q5-Pqx" firstAttribute="trailing" secondItem="yxX-AE-JDI" secondAttribute="trailing" id="31s-2H-MrR"/>
-                            <constraint firstItem="Ajn-Ha-1Di" firstAttribute="centerX" secondItem="x67-Tt-9io" secondAttribute="centerX" id="8Mo-4A-Km3"/>
-                            <constraint firstItem="yt2-Q5-Pqx" firstAttribute="bottom" secondItem="yxX-AE-JDI" secondAttribute="bottom" id="OkK-Ec-FGO"/>
-                            <constraint firstItem="Ajn-Ha-1Di" firstAttribute="centerY" secondItem="x67-Tt-9io" secondAttribute="centerY" id="TkQ-u5-Nfd"/>
-                            <constraint firstItem="yt2-Q5-Pqx" firstAttribute="leading" secondItem="yxX-AE-JDI" secondAttribute="leading" id="XHf-TY-7Kc"/>
-                            <constraint firstItem="yt2-Q5-Pqx" firstAttribute="top" secondItem="yxX-AE-JDI" secondAttribute="top" constant="467" id="z9d-7U-WHT"/>
+                            <constraint firstItem="0Fu-f2-E2r" firstAttribute="bottom" secondItem="yt2-Q5-Pqx" secondAttribute="bottom" id="3o9-av-O02"/>
+                            <constraint firstItem="0Fu-f2-E2r" firstAttribute="leading" secondItem="x67-Tt-9io" secondAttribute="leading" id="THc-bc-7S8"/>
+                            <constraint firstItem="0Fu-f2-E2r" firstAttribute="trailing" secondItem="yt2-Q5-Pqx" secondAttribute="trailing" id="Z1q-BE-iAV"/>
+                            <constraint firstItem="0Fu-f2-E2r" firstAttribute="bottom" secondItem="yxX-AE-JDI" secondAttribute="bottom" id="ZFz-Rk-ouS"/>
+                            <constraint firstAttribute="trailing" secondItem="0Fu-f2-E2r" secondAttribute="trailing" id="d2H-W3-0rK"/>
+                            <constraint firstItem="0Fu-f2-E2r" firstAttribute="leading" secondItem="yt2-Q5-Pqx" secondAttribute="leading" id="gX0-um-46g"/>
+                            <constraint firstItem="0Fu-f2-E2r" firstAttribute="top" secondItem="x67-Tt-9io" secondAttribute="top" id="j0P-ld-R7M"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yxX-AE-JDI"/>
                         <connections>
@@ -192,22 +251,66 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="myq-Fl-DpH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="pEI-T8-jMC" userLabel="Swipe Gesture Recognizer 1">
+                <swipeGestureRecognizer direction="left" id="pEI-T8-jMC" userLabel="Swipe Gesture Recognizer 1">
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="flipHorizontal" id="0WQ-Nt-NiW"/>
+                        <segue destination="g2v-qN-Ubg" kind="presentation" modalTransitionStyle="flipHorizontal" id="OyF-YC-eQy"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1736.8" y="132.68365817091455"/>
         </scene>
+        <!--Analyze Screen-->
+        <scene sceneID="JB8-gv-RH6">
+            <objects>
+                <viewController id="g2v-qN-Ubg" customClass="AnalyzeScreen" customModule="exPose" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wtU-Sj-30H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="XR Analyze COPY" translatesAutoresizingMaskIntoConstraints="NO" id="qHv-2c-MgM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tY5-3i-9DW" appends="YES" id="Z1x-20-Ax2"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ewm-nn-D0k">
+                                <rect key="frame" x="70" y="153" width="305" height="337"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="flipHorizontal" id="hcy-ep-X1A"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qHv-2c-MgM" secondAttribute="trailing" id="JP4-tW-0b1"/>
+                            <constraint firstItem="qHv-2c-MgM" firstAttribute="bottom" secondItem="pQX-Xc-z2U" secondAttribute="bottom" id="lfc-53-xf4"/>
+                            <constraint firstItem="qHv-2c-MgM" firstAttribute="top" secondItem="wtU-Sj-30H" secondAttribute="top" id="mWD-Bf-ead"/>
+                            <constraint firstItem="qHv-2c-MgM" firstAttribute="leading" secondItem="wtU-Sj-30H" secondAttribute="leading" id="xCv-fy-msC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pQX-Xc-z2U"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0pc-m9-kVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="tY5-3i-9DW" userLabel="Swipe Gesture Recognizer 4">
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="flipHorizontal" id="2F2-yu-CNJ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2640.8000000000002" y="132.68365817091455"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ImportScr" width="414" height="896"/>
+        <image name="SortBlocks" width="414" height="853"/>
         <image name="XR Analyze COPY" width="414" height="896"/>
         <image name="XR Critque COPY" width="414" height="896"/>
         <image name="XR Sort COPY" width="414" height="896"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P7m-Ge-kOv"/>
-        <segue reference="q3v-Hr-edP"/>
+        <segue reference="mIK-nx-R5V"/>
+        <segue reference="hcy-ep-X1A"/>
     </inferredMetricsTieBreakers>
 </document>
