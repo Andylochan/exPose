@@ -90,6 +90,11 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             if let imageSource = CGImageSourceCreateWithData(imageData, nil) {
                 let imageProperties2 = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil)! as NSDictionary
                 print("imageProperties2: ", imageProperties2)
+                print("DICT TEST1: ", imageProperties2.object(forKey: "ColorModel"))
+                //, NSLog ( [imageProperties2.value(forKeyPath: "{Exif}.ApertureValue")])
+                //imageProperties2 is a dictionary of dictionaries
+                //try data[keyPath:"Exif.ApertureValue"]
+                //, imageProperties2.value(forKey: "TIFF.DateTime"), imageProperties2.object(forKey: "Exif.ApertureValue")
             }
             
         })
