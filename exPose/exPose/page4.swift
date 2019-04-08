@@ -11,6 +11,7 @@ import Photos
 import PhotosUI
 
 class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -47,7 +48,6 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                 
             case .destructive:
                 print("destructive")
-                
                 
             }}))
         self.present(alert, animated: true, completion: nil)
@@ -90,12 +90,32 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             if let imageSource = CGImageSourceCreateWithData(imageData, nil) {
                 let imageProperties2 = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil)! as NSDictionary
                 print("imageProperties2: ", imageProperties2)
+                
+                
+               //Read into imageProperties -> {"Exif"}
+                let exifDict = imageProperties2["{Exif}"] as! NSDictionary
+                if let Fstop = exifDict["FNumber"] as? NSNumber {
+                    //print("FStop_TEST: ", Fstop)
+                    let FStopVar: Double = Double(truncating: Fstop);
+                    print ("FStopVar:", FStopVar);
+                }
+                if let Iso = exifDict["ISOSpeedRatings"] as? NSArray {
+                    //print("ISO_TEST: ", Iso)
+                    let IsoVarArray: Array = Iso as! Array<Int>;
+                    let IsoVarNum: Int = IsoVarArray.first!;
+                    print ("ISOVar:", IsoVarNum);
+                }
+                if let Shutter = exifDict["ExposureTime"] as? NSNumber {
+                    //print("Shutter_TEST: ", Shutter)
+                    let ShutterVar: Double = Double(truncating: Shutter);
+                    print ("ShutterVar:", ShutterVar);
+                }
             }
             
         })
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
 }
