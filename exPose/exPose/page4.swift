@@ -11,6 +11,7 @@ import Photos
 import PhotosUI
 
 class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -37,6 +38,9 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     
     @IBAction func viewMetadata(_ sender: UIButton) {
         let alert = UIAlertController(title: "Metadata", message: "ISO: 400; Aperture: f2.0; Shutter Speed: 1/80; ColorModel = RGB; DPIHeight = 72; DPIWidth = 72; Depth = 8; Orientation = 6; PixelHeight = 1936; PixelWidth = 2592", preferredStyle: .alert)
+        
+       // let alert = UIAlertController(title: "Metadata", message: "F:", FStopVar, preferredStyle: .alert)
+        
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:
@@ -47,7 +51,6 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                 
             case .destructive:
                 print("destructive")
-                
                 
             }}))
         self.present(alert, animated: true, completion: nil)
@@ -90,12 +93,32 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             if let imageSource = CGImageSourceCreateWithData(imageData, nil) {
                 let imageProperties2 = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil)! as NSDictionary
                 print("imageProperties2: ", imageProperties2)
+                
+                
+               //Read into imageProperties -> {"Exif"}
+                let exifDict = imageProperties2["{Exif}"] as! NSDictionary
+                if let Fstop = exifDict["FNumber"] as? NSNumber {
+                    //print("FStop_TEST: ", Fstop)
+                    let FStopVar: Double = Double(truncating: Fstop);
+                    print ("FStopVar:", FStopVar);
+                }
+                if let Iso = exifDict["ISOSpeedRatings"] as? NSArray {
+                    //print("ISO_TEST: ", Iso)
+                    let IsoVarArray: Array = Iso as! Array<Int>;
+                    let IsoVarNum: Int = IsoVarArray.first!;
+                    print ("ISOVar:", IsoVarNum);
+                }
+                if let Shutter = exifDict["ExposureTime"] as? NSNumber {
+                    //print("Shutter_TEST: ", Shutter)
+                    let ShutterVar: Double = Double(truncating: Shutter);
+                    print ("ShutterVar:", ShutterVar);
+                }
             }
             
         })
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
 }

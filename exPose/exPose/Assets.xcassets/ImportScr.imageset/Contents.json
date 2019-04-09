@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ImportScr.png",
+      "filename" : "ImportScreen.png .png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ImportScreen.png -1.png",
       "scale" : "2x"
     },
     {

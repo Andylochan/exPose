@@ -57,7 +57,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-34.399999999999999" y="132.68365817091455"/>
+            <point key="canvasLocation" x="298" y="133"/>
         </scene>
         <!--Page2-->
         <scene sceneID="VNt-gl-G44">
@@ -115,7 +115,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="861.60000000000002" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1431" y="359"/>
         </scene>
         <!--Page4-->
         <scene sceneID="qK9-BM-597">
@@ -180,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xaj-Mc-ENa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-490" y="1180"/>
+            <point key="canvasLocation" x="-470" y="1188"/>
         </scene>
         <!--Sort By Tile-->
         <scene sceneID="OcN-4Q-RlZ">
@@ -216,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KMI-Tn-4t1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="861.60000000000002" y="1179.7601199400301"/>
+            <point key="canvasLocation" x="674" y="1253"/>
         </scene>
         <!--Page3-->
         <scene sceneID="73T-vr-Vpa">
@@ -257,7 +257,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1736.8" y="132.68365817091455"/>
+            <point key="canvasLocation" x="2782" y="358"/>
         </scene>
         <!--Analyze Screen-->
         <scene sceneID="JB8-gv-RH6">
@@ -299,18 +299,18 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2640.8000000000002" y="132.68365817091455"/>
+            <point key="canvasLocation" x="4042" y="-289"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ImportScr" width="414" height="896"/>
+        <image name="ImportScr" width="828" height="1792"/>
         <image name="SortBlocks" width="414" height="853"/>
         <image name="XR Analyze COPY" width="414" height="896"/>
         <image name="XR Critque COPY" width="414" height="896"/>
         <image name="XR Sort COPY" width="414" height="896"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mIK-nx-R5V"/>
-        <segue reference="hcy-ep-X1A"/>
+        <segue reference="Ses-Sb-1kT"/>
+        <segue reference="q3v-Hr-edP"/>
     </inferredMetricsTieBreakers>
 </document>
