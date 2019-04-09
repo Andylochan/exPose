@@ -38,6 +38,9 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     
     @IBAction func viewMetadata(_ sender: UIButton) {
         let alert = UIAlertController(title: "Metadata", message: "ISO: 400; Aperture: f2.0; Shutter Speed: 1/80; ColorModel = RGB; DPIHeight = 72; DPIWidth = 72; Depth = 8; Orientation = 6; PixelHeight = 1936; PixelWidth = 2592", preferredStyle: .alert)
+        
+       // let alert = UIAlertController(title: "Metadata", message: "F:", FStopVar, preferredStyle: .alert)
+        
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:
