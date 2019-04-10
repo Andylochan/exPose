@@ -10,6 +10,14 @@ import UIKit
 import Photos
 import PhotosUI
 
+class imageFile  {
+    //var fileName = String()
+    //var fileID = Int()
+    var fstop = Double()
+    var shutter = Double()
+    var iso = Int()
+}
+
 class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
@@ -94,6 +102,8 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                 let imageProperties2 = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil)! as NSDictionary
                 print("imageProperties2: ", imageProperties2)
                 
+                var images : [imageFile] = []
+                let aImage = imageFile()
                 
                //Read into imageProperties -> {"Exif"}
                 let exifDict = imageProperties2["{Exif}"] as! NSDictionary
@@ -101,18 +111,24 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                     //print("FStop_TEST: ", Fstop)
                     let FStopVar: Double = Double(truncating: Fstop);
                     print ("FStopVar:", FStopVar);
+                    aImage.fstop = FStopVar
                 }
                 if let Iso = exifDict["ISOSpeedRatings"] as? NSArray {
                     //print("ISO_TEST: ", Iso)
                     let IsoVarArray: Array = Iso as! Array<Int>;
                     let IsoVarNum: Int = IsoVarArray.first!;
                     print ("ISOVar:", IsoVarNum);
+                    aImage.iso = IsoVarNum
                 }
                 if let Shutter = exifDict["ExposureTime"] as? NSNumber {
                     //print("Shutter_TEST: ", Shutter)
                     let ShutterVar: Double = Double(truncating: Shutter);
                     print ("ShutterVar:", ShutterVar);
+                    aImage.shutter = ShutterVar
                 }
+                
+                images.append(aImage)
+                dump(images)
             }
             
         })
