@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C8CC2B0226553290062FE41 /* Clarifai_Apple_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8CC2AF226553290062FE41 /* Clarifai_Apple_SDK.framework */; };
+		0C8CC2B1226553290062FE41 /* Clarifai_Apple_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8CC2AF226553290062FE41 /* Clarifai_Apple_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0C8F9D69225E884800565FD3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8F9D68225E884800565FD3 /* Accelerate.framework */; };
 		0C8F9D6B225E885200565FD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8F9D6A225E885200565FD3 /* CoreGraphics.framework */; };
 		0C8F9D6D225E885D00565FD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8F9D6C225E885D00565FD3 /* Foundation.framework */; };
@@ -45,7 +47,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0C8CC2B22265532A0062FE41 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0C8CC2B1226553290062FE41 /* Clarifai_Apple_SDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0C8CC2AF226553290062FE41 /* Clarifai_Apple_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Clarifai_Apple_SDK.framework; path = ../Clarifai/Clarifai_Apple_SDK.framework; sourceTree = "<group>"; };
 		0C8F9D68225E884800565FD3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		0C8F9D6A225E885200565FD3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0C8F9D6C225E885D00565FD3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -83,6 +100,7 @@
 				0C8F9D71225E88A100565FD3 /* libsqlite3.tbd in Frameworks */,
 				0C8F9D6F225E889900565FD3 /* libc++.tbd in Frameworks */,
 				0C8F9D6D225E885D00565FD3 /* Foundation.framework in Frameworks */,
+				0C8CC2B0226553290062FE41 /* Clarifai_Apple_SDK.framework in Frameworks */,
 				0C8F9D6B225E885200565FD3 /* CoreGraphics.framework in Frameworks */,
 				0C8F9D69225E884800565FD3 /* Accelerate.framework in Frameworks */,
 			);
@@ -122,6 +140,7 @@
 		1491BFC7221FB53C00E721B0 = {
 			isa = PBXGroup;
 			children = (
+				0C8CC2AF226553290062FE41 /* Clarifai_Apple_SDK.framework */,
 				1491BFD2221FB53C00E721B0 /* exPose */,
 				1491BFE7221FB53D00E721B0 /* exPoseTests */,
 				1491BFF2221FB53D00E721B0 /* exPoseUITests */,
@@ -187,6 +206,7 @@
 				0C8F9D76225E88FA00565FD3 /* ShellScript */,
 				1491BFCD221FB53C00E721B0 /* Frameworks */,
 				1491BFCE221FB53C00E721B0 /* Resources */,
+				0C8CC2B22265532A0062FE41 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -511,6 +531,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(SRCROOT)";
 				INFOPLIST_FILE = exPose/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

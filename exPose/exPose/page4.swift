@@ -9,9 +9,17 @@
 import UIKit
 import Photos
 import PhotosUI
+import Clarifai_Apple_SDK
 
 class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Clarifai.sharedInstance().start(apiKey:"da75f627006347d0b9edd26fbf73babf")
+
+        return true
+    }
+    
     
     @IBOutlet weak var imageView: UIImageView!
     
