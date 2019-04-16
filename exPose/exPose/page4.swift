@@ -13,11 +13,11 @@ import Clarifai_Apple_SDK
 
 class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    /*func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Clarifai.sharedInstance().start(apiKey:"da75f627006347d0b9edd26fbf73babf")
         
         return true
-    }
+    } */
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -82,6 +82,37 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         {
             //Error message
         }
+        
+        var model: Model!
+        var concepts: [Concept] = []
+        
+        model = Clarifai.sharedInstance().generalModel
+        
+        concepts.removeAll()
+        
+        let image = Image(image: self.imageView.image)
+        
+        let dataAsset = DataAsset.init(image: image)
+        let input = Input.init(dataAsset:dataAsset)
+        let inputs = [input]
+        model.predict(inputs, completionHandler: {(outputs: [Output]?,error: Error?) -> Void in
+            // Iterate through outputs to learn about what has been predicted
+            for output in outputs! {
+                // Do something with your outputs
+                // In the sample code below the output concepts are being added to an array to be displayed.
+                //concepts.append(contentsOf: output.dataAsset.concepts!)
+                
+                let concepts = output.dataAsset.concepts
+                print(concepts?.count)
+                for concept in concepts! {
+                    print(concept.name)
+                    //subjects.append(concept.name)
+                }
+                
+                print("done")  //Done is printed
+            }
+            print("done2") //Done is printed
+        })
         
         self.dismiss(animated: true, completion: nil)
         

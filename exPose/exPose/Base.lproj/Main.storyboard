@@ -303,14 +303,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ImportScr" width="828" height="1792"/>
+        <image name="ImportScr" width="414" height="896"/>
         <image name="SortBlocks" width="414" height="853"/>
         <image name="XR Analyze COPY" width="414" height="896"/>
         <image name="XR Critque COPY" width="414" height="896"/>
         <image name="XR Sort COPY" width="414" height="896"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="xpy-0p-oP4"/>
         <segue reference="Ses-Sb-1kT"/>
-        <segue reference="q3v-Hr-edP"/>
+        <segue reference="2F2-yu-CNJ"/>
     </inferredMetricsTieBreakers>
 </document>
