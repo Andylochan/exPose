@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C9E61C9226E9968007B6D25 /* UseClarifai.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E61C8226E9967007B6D25 /* UseClarifai.m */; };
 		143DB33C222079EC001EB4F3 /* page4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143DB33B222079EC001EB4F3 /* page4.swift */; };
 		1491BFD4221FB53C00E721B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1491BFD3221FB53C00E721B0 /* AppDelegate.swift */; };
 		1491BFD6221FB53C00E721B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1491BFD5221FB53C00E721B0 /* ViewController.swift */; };
@@ -43,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		01C4B877F306F86C1BC30F8A /* Pods_exPoseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exPoseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C9E618A2267D6B4007B6D25 /* exPose-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "exPose-Bridging-Header.h"; sourceTree = "<group>"; };
+		0C9E61C8226E9967007B6D25 /* UseClarifai.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = UseClarifai.m; path = exPose/UseClarifai.m; sourceTree = "<group>"; };
+		0C9E61CA226E99B0007B6D25 /* UseClarifai.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UseClarifai.h; sourceTree = "<group>"; };
 		143DB33B222079EC001EB4F3 /* page4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = page4.swift; sourceTree = "<group>"; };
 		1491BFD0221FB53C00E721B0 /* exPose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exPose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1491BFD3221FB53C00E721B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,12 +133,15 @@
 				1491C001221FB56500E721B0 /* Page2.swift */,
 				1491C003221FC94100E721B0 /* page3.swift */,
 				143DB33B222079EC001EB4F3 /* page4.swift */,
+				0C9E61C8226E9967007B6D25 /* UseClarifai.m */,
+				0C9E61CA226E99B0007B6D25 /* UseClarifai.h */,
 				14CC1AB2222EAEA900122664 /* AnalyzeScreen.swift */,
 				14CC1AB4222EAECE00122664 /* SortByTile.swift */,
 				1491BFD7221FB53C00E721B0 /* Main.storyboard */,
 				1491BFDA221FB53C00E721B0 /* Assets.xcassets */,
 				1491BFDC221FB53C00E721B0 /* LaunchScreen.storyboard */,
 				1491BFDF221FB53C00E721B0 /* Info.plist */,
+				0C9E618A2267D6B4007B6D25 /* exPose-Bridging-Header.h */,
 			);
 			path = exPose;
 			sourceTree = "<group>";
@@ -167,7 +174,6 @@
 				AED8A582AF0D08E8D2F120EE /* Pods-exPoseUITests.debug.xcconfig */,
 				21D73F776D8069AFA1A61B0E /* Pods-exPoseUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -253,6 +259,7 @@
 				TargetAttributes = {
 					1491BFCF221FB53C00E721B0 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					1491BFE3221FB53D00E721B0 = {
 						CreatedOnToolsVersion = 10.1;
@@ -365,12 +372,16 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-exPose/Pods-exPose-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Clarifai/Clarifai.framework",
 				"${PODS_ROOT}/Clarifai-Apple-SDK/Clarifai_Apple_SDK.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Clarifai.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Clarifai_Apple_SDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +418,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C9E61C9226E9968007B6D25 /* UseClarifai.m in Sources */,
 				14CC1AB3222EAEA900122664 /* AnalyzeScreen.swift in Sources */,
 				143DB33C222079EC001EB4F3 /* page4.swift in Sources */,
 				14CC1AB5222EAECE00122664 /* SortByTile.swift in Sources */,
@@ -589,6 +601,7 @@
 			baseConfigurationReference = B651FD1F1CFDC02117B72F54 /* Pods-exPose.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = exPose/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -597,6 +610,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.hofstra.andylochan.exPose;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "exPose/exPose-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -607,6 +622,7 @@
 			baseConfigurationReference = DF36E28C9AF620BE2E78914C /* Pods-exPose.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = exPose/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -615,6 +631,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.hofstra.andylochan.exPose;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "exPose/exPose-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

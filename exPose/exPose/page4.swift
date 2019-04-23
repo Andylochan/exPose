@@ -83,6 +83,10 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             //Error message
         }
         
+        
+        // CLARIFAI THINGS
+        
+        
         var model: Model!
         var concepts: [Concept] = []
         
@@ -105,7 +109,7 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                 let concepts = output.dataAsset.concepts
                 print(concepts?.count)
                 for concept in concepts! {
-                    print(concept.name)
+                    print(concept.name, concept.score)
                     //subjects.append(concept.name)
                 }
                 
@@ -113,6 +117,12 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             }
             print("done2") //Done is printed
         })
+        
+        var instanceOfClarifaiObject: ClarifaiObject = ClarifaiObject()
+        //instanceOfClarifaiModel.someProperty = "Hello World"
+        //print(instanceOfClarifaiModel.someProperty)
+        instanceOfClarifaiObject.SomeMethod(image)
+        
         
         self.dismiss(animated: true, completion: nil)
         
