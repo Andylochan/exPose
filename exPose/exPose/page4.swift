@@ -76,6 +76,10 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
+            var instanceOfClarifaiObject: ClarifaiObject = ClarifaiObject()
+            //instanceOfClarifaiModel.someProperty = "Hello World"
+            //print(instanceOfClarifaiModel.someProperty)
+            instanceOfClarifaiObject.someMethod(image)
             imageView.image = image
         }
         else
@@ -117,12 +121,6 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             }
             print("done2") //Done is printed
         })
-        
-        var instanceOfClarifaiObject: ClarifaiObject = ClarifaiObject()
-        //instanceOfClarifaiModel.someProperty = "Hello World"
-        //print(instanceOfClarifaiModel.someProperty)
-        instanceOfClarifaiObject.SomeMethod(image)
-        
         
         self.dismiss(animated: true, completion: nil)
         

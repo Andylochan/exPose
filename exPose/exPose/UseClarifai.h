@@ -9,13 +9,17 @@
 #ifndef UseClarifai_h
 #define UseClarifai_h
 #import <Foundation/Foundation.h>
+#import "exPose-Bridging-Header.h"
+
+#import "ClarifaiApp.h"
+
+//@class ClarifaiObject;
 
 @interface ClarifaiObject : NSObject
 
 //@property (strong, nonatomic) id someProperty;
-//@property (strong, nonatomic) ClarifaiApp *app;
 
-- (void) SomeMethod:(UIImage *)img;
+- (void) SomeMethod:(UIImage * )img;
 
 @end
 

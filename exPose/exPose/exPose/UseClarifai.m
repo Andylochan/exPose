@@ -10,11 +10,14 @@
 #import "exPose-Bridging-Header.h"
 
 #import "ClarifaiApp.h"
+//#import "UseClarifai.h"
 
 @implementation ClarifaiObject
 
 - (void) SomeMethod: (UIImage * )img{
     NSLog(@"ClarifaiModels Ran");
+    
+    //UIImage * thisImage = img;
     
     ClarifaiApp *app = [[ClarifaiApp alloc] initWithApiKey:@"da75f627006347d0b9edd26fbf73babf"];
     
