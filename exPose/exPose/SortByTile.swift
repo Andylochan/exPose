@@ -16,6 +16,11 @@ class SortByTile: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    /*@IBAction func CheckGlobalTest(_ sender: UIButton) {
+        let StringTester = MyVariables.ISOTest1;
+        print("CONSOLE TEST IN SORTTILES:", StringTester)
+    }*/
+    
 
     /*
     // MARK: - Navigation

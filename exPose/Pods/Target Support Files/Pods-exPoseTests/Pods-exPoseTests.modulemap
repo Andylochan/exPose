@@ -1,0 +1,6 @@
+framework module Pods_exPoseTests {
+  umbrella header "Pods-exPoseTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
