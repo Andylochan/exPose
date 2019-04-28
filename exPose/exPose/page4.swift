@@ -11,12 +11,13 @@ import Photos
 import PhotosUI
 import SQLite
 
-struct MyVariables {                    //Global Variables
+//Global Variables
+struct MyVariables {
+    static var String64 = "";
     static var FstopTest1 = 0.0;
     static var ISOTest1 = 0;
     static var ShutterTest1 = 0.0;
     static var ModelTest1 = "";
-    
     static var ImgTest1 = UIImage(); //Selected Image
     //Insert into SQL DB one by one
     
@@ -28,27 +29,75 @@ struct MyVariables {                    //Global Variables
 class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var database: Connection!; //Stored locally on the users device
-  
-    let photoDisk = Table("photoDisk");
+    let photoTable = Table("photoTable");
     let id = Expression<Int>("id");
-    let photoDir = Expression<String?>("photoDir"); //Photo Directory
-    let fstop = Expression<Double?>("fstop");
-    let iso = Expression<Int?>("iso");
-    let shutter = Expression<Double?>("shutter");
-    //Clarity,Blur,Color value --> Etc --> other fields that should be saved into the table
- 
+    let photoSTORED = Expression<String?>("photoSTORED");  //Encoded Image Stored as 64bit String
+    let fstop = Expression<Double>("fstop");
+    let iso = Expression<Int>("iso");
+    let shutter = Expression<Double>("shutter");
+    let model = Expression<String>("model");
+    
+    //Clarifai Values: Clarity,Blur,Color value --> Etc --> other fields that should be saved into the table
+    //let clarity = Expression<Double>("clarity");
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad();
+    
         do
         {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let fileUrl = documentDirectory.appendingPathComponent("photoDisk").appendingPathExtension("sqlite3");
+            let fileUrl = documentDirectory.appendingPathComponent("photoTable").appendingPathExtension("sqlite3");
             let database = try Connection(fileUrl.path)
             self.database = database;
         }
         catch {print(error);}
         imagePicker.delegate = self;
+        
+        //Delete previous tables in document directory from previous instances
+        print("Attempting Intial Delete");
+        do {
+            try self.database.run(photoTable.drop(ifExists: true))
+            print("Deleteing Previous Table")
+        } catch {
+            print(error)
+        }
+        
+        //Create a table in the database
+        let createTable = self.photoTable.create { (table) in
+            table.column(self.id, primaryKey: true)
+            table.column(self.photoSTORED)
+            table.column(self.fstop)
+            table.column(self.iso)
+            table.column(self.shutter)
+            table.column(self.model)
+        }
+        do {
+            try self.database.run(createTable)
+            print("Created Table")
+        } catch {
+            print(error)
+        }
+        
     }
+    
+    @IBAction func listDB(_ sender: UIButton) {
+        print("LIST DB TAPPED")
+        
+        do {
+            let photos = try self.database.prepare(self.photoTable)
+            for photo in photos {
+                print("id: \(photo[self.id]), fstop: \(photo[self.fstop]), iso: \(photo[self.iso]) , shutter: \(photo[self.shutter]) , model: \(photo[self.model])")
+                // photoSTORED: \(String(describing: photo[self.photoSTORED])), //before fstop ^^^ Causes program to hang up due to long string
+            }
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    
+    
     
     @IBOutlet weak var imageView: UIImageView!
     let imagePicker = UIImagePickerController()
@@ -56,19 +105,17 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     @IBAction func loadImageButtonTapped(_ sender: AnyObject) {
 //        imagePicker.allowsEditing = false
 //        imagePicker.sourceType = .photoLibrary
-//
 //        present(imagePicker, animated: true, completion: nil)
         let image = UIImagePickerController();
         image.delegate = self
-        
         image.sourceType = UIImagePickerController.SourceType.photoLibrary
-        
         image.allowsEditing = false
-        
         self.present(image, animated: true)
-        {
-            //After it is complete
+        {//After it is complete
         }
+        
+       // guard let photoTemp = MyVariables.ImgTest1
+       //     else { return }
     }
     
     // MARK: - UIImagePickerControllerDelegate Methods
@@ -77,15 +124,19 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
+        
             imageView.image = image;
             MyVariables.ImgTest1 = image;
+    
         }
         else
         {
             print("Error in func imagePickerController()"); //Error message
         }
-        
         self.dismiss(animated: true, completion: nil)
+        
+        
+        
         
         //Extract Metdadata/EXIF files
         let assetURL = info[UIImagePickerController.InfoKey.referenceURL] as! NSURL
@@ -100,7 +151,7 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             let imageData: NSData = data! as NSData
             if let imageSource = CGImageSourceCreateWithData(imageData, nil) {
                 let imageProperties2 = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil)! as NSDictionary
-                print("imageProperties2: ", imageProperties2)
+                //print("imageProperties2: ", imageProperties2) //DEBUGGING CODE
                 
                 
                //Read into imageProperties -> {"Exif"}
@@ -136,8 +187,28 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                     print ("ModelVar:", Model);
                     
                 }
+                
+                //Encode image and insert into table after values are loaded into MyVariables struct
+                print("INSERT PHOTO after LoadImageButtonTapped");
+                let imageData:NSData = MyVariables.ImgTest1.pngData()! as NSData
+                MyVariables.String64 = imageData.base64EncodedString(options: .lineLength64Characters) //ENCODE THE UIPHOTO to store into DATABASE
+               //let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters) //ENCODE THE UIPHOTO to store into DATABASE
+                
+                /* IMAGE DECODING CODE< Using the global String64 value, perhaps call this as a function elsewhere.
+                let dataDecoded:NSData = NSData(base64Encoded: strBase64, options: NSData.Base64DecodingOptions(rawValue: 0))!
+                let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+                */
+                
+                //INSERT DATA into the SQL Photo Table
+                let loadImageButtonTapped = self.photoTable.insert(self.photoSTORED <- MyVariables.String64, self.fstop <- MyVariables.FstopTest1, self.iso <- MyVariables.ISOTest1, self.shutter <- MyVariables.ShutterTest1, self.model <- MyVariables.ModelTest1);
+                do {
+                    try self.database.run(loadImageButtonTapped)
+                    print("INSERTED PHOTO INTO TABLE")
+                } catch {
+                    print(error);
+                }
+                
             }
-            
         })
     }
     
@@ -145,31 +216,46 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    //////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////
+    
     @IBAction func viewMetadata(_ sender: UIButton) {
         print ("ViewMetaData Clicked from page 4");
-    }/*
-        let alert = UIAlertController(title: "Metadata", message: "ISO: 400; Aperture: f2.0; Shutter Speed: 1/80; ColorModel = RGB;", preferredStyle: .alert)
-        //let alert = UIAlertController(title: "Metadata", message: IsoVar as String, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            switch action.style{
-            case .default:
-                print("default")
-            case .cancel:
-                print("cancel")
-            case .destructive:
-                print("destructive")
-            }}))
-        self.present(alert, animated: true, completion: nil)
-        
-       // let StringTester = MyVariables.ISOTest1;                      //DEBUGGING CODE
-       // print("CONSOLE TEST IN VIEWMETADATA:", StringTester)
- 
-    }*/
+    }
     
-}
+} //END
+
+
+
+
+
+
+
+
+
+
+
+/*
+ let alert = UIAlertController(title: "Metadata", message: "ISO: 400; Aperture: f2.0; Shutter Speed: 1/80; ColorModel = RGB;", preferredStyle: .alert)
+ //let alert = UIAlertController(title: "Metadata", message: IsoVar as String, preferredStyle: .alert)
+ 
+ alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+ switch action.style{
+ case .default:
+ print("default")
+ case .cancel:
+ print("cancel")
+ case .destructive:
+ print("destructive")
+ }}))
+ self.present(alert, animated: true, completion: nil)
+ 
+ // let StringTester = MyVariables.ISOTest1;                      //DEBUGGING CODE
+ // print("CONSOLE TEST IN VIEWMETADATA:", StringTester)
+ 
+ }*/
+
+
+
+
 
 /*
  var FStopVar: Double;
