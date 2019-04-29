@@ -10,6 +10,7 @@
 		03E1B64ED68D1F5EBEC4B157 /* Pods_exPose.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014BF27986779FD5F28F9ED8 /* Pods_exPose.framework */; };
 		142BB95B2270F3B2003696E8 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142BB95A2270F3B2003696E8 /* SQLite.framework */; };
 		142BB95F22711105003696E8 /* MetaDataScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142BB95E22711105003696E8 /* MetaDataScreen.swift */; };
+		142BB96122769C66003696E8 /* CritiqueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142BB96022769C66003696E8 /* CritiqueController.swift */; };
 		143DB33C222079EC001EB4F3 /* page4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143DB33B222079EC001EB4F3 /* page4.swift */; };
 		1491BFD4221FB53C00E721B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1491BFD3221FB53C00E721B0 /* AppDelegate.swift */; };
 		1491BFD6221FB53C00E721B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1491BFD5221FB53C00E721B0 /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 		014BF27986779FD5F28F9ED8 /* Pods_exPose.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exPose.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		142BB95A2270F3B2003696E8 /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		142BB95E22711105003696E8 /* MetaDataScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MetaDataScreen.swift; path = ../MetaDataScreen.swift; sourceTree = "<group>"; };
+		142BB96022769C66003696E8 /* CritiqueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CritiqueController.swift; sourceTree = "<group>"; };
 		143DB33B222079EC001EB4F3 /* page4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = page4.swift; sourceTree = "<group>"; };
 		1491BFD0221FB53C00E721B0 /* exPose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exPose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1491BFD3221FB53C00E721B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				1491BFDA221FB53C00E721B0 /* Assets.xcassets */,
 				1491BFDC221FB53C00E721B0 /* LaunchScreen.storyboard */,
 				1491BFDF221FB53C00E721B0 /* Info.plist */,
+				142BB96022769C66003696E8 /* CritiqueController.swift */,
 			);
 			path = exPose;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14CC1AB3222EAEA900122664 /* AnalyzeScreen.swift in Sources */,
+				142BB96122769C66003696E8 /* CritiqueController.swift in Sources */,
 				143DB33C222079EC001EB4F3 /* page4.swift in Sources */,
 				14CC1AB5222EAECE00122664 /* SortByTile.swift in Sources */,
 				1491BFD6221FB53C00E721B0 /* ViewController.swift in Sources */,
