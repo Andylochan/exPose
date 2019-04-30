@@ -1,18 +1,44 @@
 PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - Clarifai (2.3.2):
+    - AFNetworking (~> 3.1)
+  - Clarifai-Apple-SDK (3.0.0)
   - SQLite.swift (0.11.6):
     - SQLite.swift/standard (= 0.11.6)
   - SQLite.swift/standard (0.11.6)
 
 DEPENDENCIES:
+  - Clarifai
+  - Clarifai-Apple-SDK (~> 3.0.0)
   - SQLite.swift (~> 0.11.6)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Clarifai
+    - Clarifai-Apple-SDK
     - SQLite.swift
 
 SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Clarifai: 6d6cce2b31aefcf33893f2c3a18588b266771d11
+  Clarifai-Apple-SDK: e01b3b9e5b55d618bdbec9f80d9bae39c291bdb7
   SQLite.swift: 46d890be8601964454bd3392527f863d1b802d45
 
-PODFILE CHECKSUM: 882aca5b7af864096678ae530bc01b04217665a3
+PODFILE CHECKSUM: 56d8a8cd4c93d66fe39cf6b7168f5347833abc4d
 
 COCOAPODS: 1.6.1
