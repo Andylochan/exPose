@@ -19,11 +19,10 @@ struct MyVariables {
     static var ShutterTest1 = 0.0;
     static var ModelTest1 = "";
     static var ImgTest1 = UIImage(); //Selected Image
+    //static var photoTableGlobal = Table("");
     //Insert into SQL DB one by one
     
     //Add Clarifai variables for comparison
-    
-
 }
 
 class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -43,7 +42,6 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     
     override func viewDidLoad() {
         super.viewDidLoad();
-    
         do
         {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -54,31 +52,33 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         catch {print(error);}
         imagePicker.delegate = self;
         
+        //Intial Table Deletion upon app start
+        if myImportScrVars.flag == 1 {
+            //Delete previous tables in document directory from previous instances
+            print("Attempting Intial Delete");
+            do {
+                try self.database.run(photoTable.drop(ifExists: true))
+                print("Deleted Previous Table")
+            } catch {
+                print(error)
+            }
+        }
+        myImportScrVars.flag = myImportScrVars.flag + 1; //Increment to 2, no loop
+        
+    }
+    
+    @IBOutlet weak var imageView: UIImageView!
+    let imagePicker = UIImagePickerController()
+    
+    @IBAction func resetDB(_ sender: UIButton) {
         //Delete previous tables in document directory from previous instances
-        print("Attempting Intial Delete");
+        print("Attempting Delete");
         do {
             try self.database.run(photoTable.drop(ifExists: true))
-            print("Deleteing Previous Table")
+            print("Deleted Previous Table")
         } catch {
             print(error)
         }
-        
-        //Create a table in the database
-        let createTable = self.photoTable.create { (table) in
-            table.column(self.id, primaryKey: true)
-            table.column(self.photoSTORED)
-            table.column(self.fstop)
-            table.column(self.iso)
-            table.column(self.shutter)
-            table.column(self.model)
-        }
-        do {
-            try self.database.run(createTable)
-            print("Created Table")
-        } catch {
-            print(error)
-        }
-        
     }
     
     @IBAction func listDB(_ sender: UIButton) {
@@ -93,19 +93,59 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         } catch {
             print(error)
         }
-        
     }
     
+    //SORTING CALLS from SortByTile
+    @IBAction func listISO(_ sender: UIButton) {
+        print("ORDER by ISO Tapped on SortVC")
+        do {
+            let photos = try self.database.prepare(self.photoTable.order(self.iso)) //ORDER BY ISO
+            for photo in photos {
+                print("id: \(photo[self.id]), fstop: \(photo[self.fstop]), iso: \(photo[self.iso]) , shutter: \(photo[self.shutter]) , model: \(photo[self.model])")
+            } } catch { print(error) }
+    }
+    @IBAction func listAperture(_ sender: UIButton) {
+        print("ORDER by Aperture Tapped on SortVC")
+        do {
+            let photos = try self.database.prepare(self.photoTable.order(self.fstop)) //ORDER BY Fstop
+            for photo in photos {
+                print("id: \(photo[self.id]), fstop: \(photo[self.fstop]), iso: \(photo[self.iso]) , shutter: \(photo[self.shutter]) , model: \(photo[self.model])")
+            } } catch { print(error) }
+    }
+    @IBAction func listShutter(_ sender: UIButton) {
+        print("ORDER by Shutter Tapped on SortVC")
+        do {
+            let photos = try self.database.prepare(self.photoTable.order(self.shutter)) //ORDER BY Shutter
+            for photo in photos {
+                print("id: \(photo[self.id]), fstop: \(photo[self.fstop]), iso: \(photo[self.iso]) , shutter: \(photo[self.shutter]) , model: \(photo[self.model])")
+            } } catch { print(error) }
+    }
     
-    
-    
-    @IBOutlet weak var imageView: UIImageView!
-    let imagePicker = UIImagePickerController()
+ 
     
     @IBAction func loadImageButtonTapped(_ sender: AnyObject) {
 //        imagePicker.allowsEditing = false
 //        imagePicker.sourceType = .photoLibrary
 //        present(imagePicker, animated: true, completion: nil)
+
+        //Create a table in the database
+        let createTable = self.photoTable.create { (table) in
+            table.column(self.id, primaryKey: true)
+            table.column(self.photoSTORED)
+            table.column(self.fstop)
+            table.column(self.iso)
+            table.column(self.shutter)
+            table.column(self.model)
+        }
+        do {
+            try self.database.run(createTable)
+            print("Created Table")
+        } catch {
+            print("DNCT") //DO NOT CREATE TABLE = already exists
+            //print(error) //Swift Error Code
+        }
+        
+        //Image Picking Code
         let image = UIImagePickerController();
         image.delegate = self
         image.sourceType = UIImagePickerController.SourceType.photoLibrary
@@ -113,9 +153,6 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         self.present(image, animated: true)
         {//After it is complete
         }
-        
-       // guard let photoTemp = MyVariables.ImgTest1
-       //     else { return }
     }
     
     // MARK: - UIImagePickerControllerDelegate Methods
@@ -124,10 +161,9 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
-        
             imageView.image = image;
             MyVariables.ImgTest1 = image;
-    
+            //MyVariables.photoTableGlobal = photoTable; //Make photoTable usable by SortByTile //CAUSES THE PROGRAM TO SLOW DOWN
         }
         else
         {
@@ -181,8 +217,6 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                 if let Model = tiffDict["Model"] as? NSString {
                     //print("Model_TEST: ", Model)
                     let Model: String = String(Model);
-                    //let ModelVarArray: Array = Model as! Array<String>;
-                    //let ModelVarString: String = ModelVarArray.first!;
                     MyVariables.ModelTest1 = Model;
                     print ("ModelVar:", Model);
                     
@@ -206,10 +240,7 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                     print("INSERTED PHOTO INTO TABLE")
                 } catch {
                     print(error);
-                }
-                
-            }
-        })
+                }}})
     }
     
     

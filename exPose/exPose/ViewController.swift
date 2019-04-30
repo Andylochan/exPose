@@ -9,13 +9,22 @@
 
 import UIKit
 
+
+struct myImportScrVars{
+    static var flag = 0;
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    @IBAction func importBtnIncFlag(_ sender: UIButton) {
+        myImportScrVars.flag = myImportScrVars.flag + 1;
+    }
+    
 
 }
 
