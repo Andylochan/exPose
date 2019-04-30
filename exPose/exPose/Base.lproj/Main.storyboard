@@ -21,6 +21,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZa-JT-B75">
                                 <rect key="frame" x="0.0" y="511" width="414" height="351"/>
                                 <connections>
+                                    <action selector="importBtnIncFlag:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sQ2-lw-PWe"/>
                                     <segue destination="pgK-mU-huY" kind="presentation" modalTransitionStyle="coverVertical" id="P7m-Ge-kOv"/>
                                 </connections>
                             </button>
@@ -123,32 +124,23 @@
                                 <rect key="frame" x="50" y="106" width="314" height="619"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jaq-Pr-57F">
-                                <rect key="frame" x="50" y="754" width="84" height="50"/>
+                                <rect key="frame" x="50" y="754" width="314" height="50"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="314" id="JSY-YE-ueU"/>
                                     <constraint firstAttribute="height" constant="50" id="Pb5-Oe-fDC"/>
-                                    <constraint firstAttribute="width" constant="84" id="sSK-LJ-QvJ"/>
                                 </constraints>
                                 <state key="normal" title="Upload"/>
                                 <connections>
                                     <action selector="loadImageButtonTapped:" destination="pgK-mU-huY" eventType="touchUpInside" id="XFO-qa-n29"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqO-CE-Tve">
-                                <rect key="frame" x="207" y="754" width="157" height="50"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="View Metadata"/>
-                                <connections>
-                                    <action selector="viewMetadata:" destination="pgK-mU-huY" eventType="touchUpInside" id="R0I-gp-akX"/>
-                                    <segue destination="gHq-dU-PhI" kind="presentation" id="fNg-yZ-Qvo"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G71-Ym-2e3">
-                                <rect key="frame" x="244" y="823" width="83" height="30"/>
+                                <rect key="frame" x="281" y="823" width="83" height="30"/>
                                 <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Tny-Ac-Vf1"/>
-                                    <constraint firstAttribute="width" constant="83" id="q7R-mA-RbK"/>
+                                    <constraint firstAttribute="width" constant="83" id="ash-K1-Njp"/>
+                                    <constraint firstAttribute="height" constant="30" id="znJ-Zc-4N7"/>
                                 </constraints>
                                 <state key="normal" title="List DB">
                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -158,23 +150,35 @@
                                     <action selector="listDB:" destination="pgK-mU-huY" eventType="touchUpInside" id="kzO-MB-aun"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBc-qQ-1fP">
+                                <rect key="frame" x="50" y="823" width="70" height="30"/>
+                                <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0fb-bu-0Aw"/>
+                                    <constraint firstAttribute="width" constant="70" id="PxV-QE-ke7"/>
+                                </constraints>
+                                <state key="normal" title="RESET DB">
+                                    <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetDB:" destination="pgK-mU-huY" eventType="touchUpInside" id="IMZ-92-SP0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Jaq-Pr-57F" firstAttribute="top" secondItem="wqO-CE-Tve" secondAttribute="top" id="04t-NP-paz"/>
+                            <constraint firstItem="G71-Ym-2e3" firstAttribute="leading" secondItem="aBc-qQ-1fP" secondAttribute="trailing" constant="161" id="1x9-r2-cea"/>
                             <constraint firstItem="Jaq-Pr-57F" firstAttribute="top" secondItem="QUg-Nh-hKW" secondAttribute="bottom" constant="29" id="2ip-Uj-ilX"/>
+                            <constraint firstItem="bvS-7A-Erh" firstAttribute="bottom" secondItem="G71-Ym-2e3" secondAttribute="bottom" constant="9" id="5Hf-jO-eGY"/>
                             <constraint firstItem="QUg-Nh-hKW" firstAttribute="leading" secondItem="bvS-7A-Erh" secondAttribute="leading" constant="50" id="6VT-TB-Gwe"/>
-                            <constraint firstItem="bvS-7A-Erh" firstAttribute="bottom" secondItem="G71-Ym-2e3" secondAttribute="bottom" constant="9" id="IZU-1K-HzZ"/>
                             <constraint firstItem="RLn-9M-GqT" firstAttribute="leading" secondItem="bvS-7A-Erh" secondAttribute="leading" constant="25" id="QwS-7r-c7I"/>
                             <constraint firstItem="bvS-7A-Erh" firstAttribute="bottom" secondItem="Jaq-Pr-57F" secondAttribute="bottom" constant="58" id="W50-5E-dEE"/>
+                            <constraint firstItem="bvS-7A-Erh" firstAttribute="bottom" secondItem="aBc-qQ-1fP" secondAttribute="bottom" constant="9" id="Wno-DK-6tc"/>
                             <constraint firstItem="QUg-Nh-hKW" firstAttribute="centerX" secondItem="Q49-I0-Iiq" secondAttribute="centerX" id="XA1-RI-gQx"/>
-                            <constraint firstItem="Jaq-Pr-57F" firstAttribute="baseline" secondItem="wqO-CE-Tve" secondAttribute="firstBaseline" id="ZR5-Xh-Lzc"/>
                             <constraint firstItem="QUg-Nh-hKW" firstAttribute="leading" secondItem="Jaq-Pr-57F" secondAttribute="leading" id="baT-Ah-be7"/>
                             <constraint firstItem="QUg-Nh-hKW" firstAttribute="top" secondItem="RLn-9M-GqT" secondAttribute="bottom" constant="8" symbolic="YES" id="ecm-Fp-B3A"/>
-                            <constraint firstItem="QUg-Nh-hKW" firstAttribute="trailing" secondItem="wqO-CE-Tve" secondAttribute="trailing" id="gsY-zI-4Iz"/>
-                            <constraint firstItem="wqO-CE-Tve" firstAttribute="leading" secondItem="Jaq-Pr-57F" secondAttribute="trailing" constant="73" id="mAE-oj-3jA"/>
                             <constraint firstItem="RLn-9M-GqT" firstAttribute="top" secondItem="bvS-7A-Erh" secondAttribute="top" constant="18" id="mWb-KT-8Wi"/>
-                            <constraint firstItem="bvS-7A-Erh" firstAttribute="trailing" secondItem="G71-Ym-2e3" secondAttribute="trailing" constant="87" id="rqa-HN-9h9"/>
+                            <constraint firstItem="aBc-qQ-1fP" firstAttribute="leading" secondItem="bvS-7A-Erh" secondAttribute="leading" constant="50" id="pmy-ak-sco"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bvS-7A-Erh"/>
                     </view>
@@ -184,12 +188,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xaj-Mc-ENa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30" y="1758"/>
+            <point key="canvasLocation" x="-30.434782608695656" y="1757.8125"/>
         </scene>
-        <!--Sort By Tile-->
+        <!--Page4-->
         <scene sceneID="OcN-4Q-RlZ">
             <objects>
-                <viewController id="qGP-my-tqd" customClass="SortByTile" customModule="exPose" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qGP-my-tqd" customClass="page4" customModule="exPose" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I2q-ok-pXH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -207,6 +211,27 @@
                                     <segue destination="tIn-gq-dHx" kind="presentation" modalTransitionStyle="partialCurl" id="Ses-Sb-1kT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puL-vx-UCP" userLabel="Isobtn">
+                                <rect key="frame" x="37" y="169" width="145" height="199"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="listISO:" destination="qGP-my-tqd" eventType="touchUpInside" id="hfg-uU-0S2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xiu-mu-TFp" userLabel="Apabtn">
+                                <rect key="frame" x="229" y="169" width="148" height="199"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="listAperture:" destination="qGP-my-tqd" eventType="touchUpInside" id="DwD-DN-5TT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRv-o5-HoF" userLabel="ShuBtn">
+                                <rect key="frame" x="37" y="412" width="148" height="199"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="listShutter:" destination="qGP-my-tqd" eventType="touchUpInside" id="Byg-b0-KuP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -222,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KMI-Tn-4t1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1086" y="1039"/>
+            <point key="canvasLocation" x="1085.5072463768117" y="1038.6160714285713"/>
         </scene>
         <!--Page3-->
         <scene sceneID="73T-vr-Vpa">
@@ -484,10 +509,10 @@
         <image name="improveScreen" width="500" height="817"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YXe-Ms-tgV"/>
         <segue reference="xuK-8Y-Rny"/>
+        <segue reference="YXe-Ms-tgV"/>
         <segue reference="u3t-4A-BPt"/>
         <segue reference="Ses-Sb-1kT"/>
-        <segue reference="2F2-yu-CNJ"/>
+        <segue reference="q3v-Hr-edP"/>
     </inferredMetricsTieBreakers>
 </document>
