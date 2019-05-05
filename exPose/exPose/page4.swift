@@ -13,16 +13,35 @@ import SQLite
 
 //Global Variables
 struct MyVariables {
-    static var String64 = "";
+    
     static var FstopTest1 = 0.0;
     static var ISOTest1 = 0;
     static var ShutterTest1 = 0.0;
     static var ModelTest1 = "";
     static var ImgTest1 = UIImage(); //Selected Image
+    
+    static var AndyImg = UIImage(); //Tester Variable
+    static var logoImages: [UIImage] = []; //Tester Variable
     //static var photoTableGlobal = Table("");
     //Insert into SQL DB one by one
     
     //Add Clarifai variables for comparison
+}
+
+extension String { //yourString.toImage() >>> Convert String to UIImage
+    func toImage() -> UIImage? {
+        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
+            return UIImage(data: data)
+        }
+        return nil
+    }
+}
+
+extension UIImage { //yourImage.toString() >>> Convert UIImage to String
+    func toString() -> String? {
+        let data : Data? = self.pngData()
+        return data?.base64EncodedString(options: .endLineWithLineFeed)
+    }
 }
 
 class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -30,7 +49,7 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     var database: Connection!; //Stored locally on the users device
     let photoTable = Table("photoTable");
     let id = Expression<Int>("id");
-    let photoSTORED = Expression<String?>("photoSTORED");  //Encoded Image Stored as 64bit String
+    let photoSTORED = Expression<String>("photoSTORED");  //Encoded Image Stored as 64bit String
     let fstop = Expression<Double>("fstop");
     let iso = Expression<Int>("iso");
     let shutter = Expression<Double>("shutter");
@@ -64,11 +83,13 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             }
         }
         myImportScrVars.flag = myImportScrVars.flag + 1; //Increment to 2, no loop
-        
+    
     }
     
     @IBOutlet weak var imageView: UIImageView!
     let imagePicker = UIImagePickerController()
+    
+    //Add another imageView to test if image is decoded properly
     
     @IBAction func resetDB(_ sender: UIButton) {
         //Delete previous tables in document directory from previous instances
@@ -89,20 +110,35 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             for photo in photos {
                 print("id: \(photo[self.id]), fstop: \(photo[self.fstop]), iso: \(photo[self.iso]) , shutter: \(photo[self.shutter]) , model: \(photo[self.model])")
                 // photoSTORED: \(String(describing: photo[self.photoSTORED])), //before fstop ^^^ Causes program to hang up due to long string
+                
             }
         } catch {
             print(error)
         }
+
     }
     
     //SORTING CALLS from SortByTile
     @IBAction func listISO(_ sender: UIButton) {
         print("ORDER by ISO Tapped on SortVC")
+        var isoArray: [UIImage] = [];
         do {
             let photos = try self.database.prepare(self.photoTable.order(self.iso)) //ORDER BY ISO
             for photo in photos {
                 print("id: \(photo[self.id]), fstop: \(photo[self.fstop]), iso: \(photo[self.iso]) , shutter: \(photo[self.shutter]) , model: \(photo[self.model])")
+                
+                let AndyDecoded = photo[self.photoSTORED].toImage();
+                if (AndyDecoded != nil){ //Debugging
+                    print ("Decoded >> Not Nil ")
+                } else {
+                    print ("False, Decoded is Nil")
+                }
+                isoArray.append(AndyDecoded!);
+                MyVariables.logoImages = isoArray;
+                print("ImageArray(ISO) Count:", MyVariables.logoImages.count);//Debugging
+                
             } } catch { print(error) }
+        
     }
     @IBAction func listAperture(_ sender: UIButton) {
         print("ORDER by Aperture Tapped on SortVC")
@@ -222,27 +258,33 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                     
                 }
                 
-                //Encode image and insert into table after values are loaded into MyVariables struct
-                print("INSERT PHOTO after LoadImageButtonTapped");
-                let imageData:NSData = MyVariables.ImgTest1.pngData()! as NSData
-                MyVariables.String64 = imageData.base64EncodedString(options: .lineLength64Characters) //ENCODE THE UIPHOTO to store into DATABASE
-               //let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters) //ENCODE THE UIPHOTO to store into DATABASE
+                //Encode *******************************************************************************************
+                print("Encoding...")
+                let image : UIImage = MyVariables.ImgTest1;
+                let AndyEncoded = image.toString();
                 
-                /* IMAGE DECODING CODE< Using the global String64 value, perhaps call this as a function elsewhere.
-                let dataDecoded:NSData = NSData(base64Encoded: strBase64, options: NSData.Base64DecodingOptions(rawValue: 0))!
-                let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
-                */
+                //Decode ************************************Needs to be moved to a list function*******************
+                let AndyDecoded = AndyEncoded?.toImage();
+                if (AndyDecoded != nil){ //Debugging
+                    print ("Decoded >> Not Nil ")
+                } else {
+                    print ("False, Decoded is Nil")
+                }
+                MyVariables.AndyImg = AndyDecoded ?? image;
+                MyVariables.logoImages.append(AndyDecoded!);
+                print("ImageArray Count:", MyVariables.logoImages.count);//Debugging
+                //**************************************************************************************************
                 
                 //INSERT DATA into the SQL Photo Table
-                let loadImageButtonTapped = self.photoTable.insert(self.photoSTORED <- MyVariables.String64, self.fstop <- MyVariables.FstopTest1, self.iso <- MyVariables.ISOTest1, self.shutter <- MyVariables.ShutterTest1, self.model <- MyVariables.ModelTest1);
+                let loadImageButtonTapped = self.photoTable.insert(self.photoSTORED <- AndyEncoded!, self.fstop <- MyVariables.FstopTest1, self.iso <- MyVariables.ISOTest1, self.shutter <- MyVariables.ShutterTest1, self.model <- MyVariables.ModelTest1);
                 do {
                     try self.database.run(loadImageButtonTapped)
-                    print("INSERTED PHOTO INTO TABLE")
+                    print("Successfully Inserted into Table")
                 } catch {
                     print(error);
                 }}})
+        
     }
-    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -254,15 +296,63 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     
 } //END
 
+//Encode image and insert into table after values are loaded into MyVariables struct
+/*
+ print("INSERT PHOTO after LoadImageButtonTapped");
+ let imageData:NSData = MyVariables.ImgTest1.pngData()! as NSData
+ MyVariables.String64 = imageData.base64EncodedString(options: .lineLength64Characters) //ENCODE THE UIPHOTO to store into DATABASE
+ 
+ 
+ // IMAGE DECODING CODE< Using the global String64 value, perhaps call this as a function elsewhere.
+ 
+ 
+ let dataDecoded:NSData = NSData(base64Encoded: MyVariables.String64, options: NSData.Base64DecodingOptions(rawValue: 0))!
+ let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+ self.DecodedImgView.image = decodedimage;
+ 
+ */
+
+/* 5:59 5/4/19
+ 
+ let image : UIImage = MyVariables.ImgTest1;
+ let imageData:NSData = image.pngData()! as NSData
+ let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+ 
+ //let decodedData = NSData(base64EncodedString: base64String!, options: NSData.Base64DecodingOptions(rawValue: 0) )
+ //let dataDecoded:NSData = NSData(base64Encoded: strBase64, options: NSData.Base64DecodingOptions(rawValue: 0) )!
+ //print (dataDecoded);
+ 
+ if strBase64 != nil {
+ let decodedData = NSData(base64Encoded: strBase64, options: [])
+ if let data = decodedData {
+ let decodedimage = UIImage(data: data as Data)
+ //cell.logo.image = decodedimage
+ //self.DecodedImgView.image = decodedimage;
+ } else {
+ print("error with decodedData")
+ }
+ } else {
+ print("error with base64String")
+ }
+ */
+
+/*
+ let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+ self.DecodedImgView.image = decodedimage;
+ */
 
 
-
-
-
-
-
-
-
+/*
+ func imageForBase64String(_ strBase64: String) -> UIImage? {
+ do{
+ let imageData = try Data(contentsOf: URL(string: MyVariables.String64)!)
+ let image = UIImage(data: imageData)
+ return image!
+ }
+ catch{
+ return nil
+ }
+ }*/
 
 /*
  let alert = UIAlertController(title: "Metadata", message: "ISO: 400; Aperture: f2.0; Shutter Speed: 1/80; ColorModel = RGB;", preferredStyle: .alert)

@@ -164,6 +164,14 @@
                                     <action selector="resetDB:" destination="pgK-mU-huY" eventType="touchUpInside" id="IMZ-92-SP0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55g-mY-244">
+                                <rect key="frame" x="275" y="62" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="DEBUG&gt;&gt;&gt;&gt;"/>
+                                <connections>
+                                    <segue destination="684-3g-EPa" kind="presentation" id="n4A-Oe-v5B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -189,6 +197,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xaj-Mc-ENa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-30.434782608695656" y="1757.8125"/>
+        </scene>
+        <!--Andy Display-->
+        <scene sceneID="1cX-fI-iQZ">
+            <objects>
+                <viewController id="684-3g-EPa" customClass="AndyDisplay" customModule="exPose" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Aa2-2z-mg8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pb9-S9-QDZ">
+                                <rect key="frame" x="44" y="44" width="127" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="&lt;&lt;&lt; DEBUG BACK"/>
+                                <connections>
+                                    <segue destination="pgK-mU-huY" kind="presentation" id="2Ww-YZ-fmg"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="357-sh-QeM">
+                                <rect key="frame" x="0.0" y="82" width="414" height="598"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqI-bU-cef">
+                                <rect key="frame" x="44" y="705" width="326" height="157"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0VT-PZ-NZY"/>
+                    </view>
+                    <connections>
+                        <outlet property="TestView" destination="qqI-bU-cef" id="j8R-cZ-9ds"/>
+                        <outlet property="mainScrollView" destination="357-sh-QeM" id="Pat-94-VCA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qxt-hB-PiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085.5072463768117" y="1757.8125"/>
         </scene>
         <!--Page4-->
         <scene sceneID="OcN-4Q-RlZ">
@@ -509,9 +554,9 @@
         <image name="improveScreen" width="500" height="817"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xuK-8Y-Rny"/>
         <segue reference="YXe-Ms-tgV"/>
         <segue reference="u3t-4A-BPt"/>
+        <segue reference="2Ww-YZ-fmg"/>
         <segue reference="Ses-Sb-1kT"/>
         <segue reference="q3v-Hr-edP"/>
     </inferredMetricsTieBreakers>
