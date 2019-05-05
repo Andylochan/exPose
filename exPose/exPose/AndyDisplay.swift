@@ -11,12 +11,14 @@ import UIKit
 class AndyDisplay: UIViewController {
     
     @IBOutlet weak var mainScrollView: UIScrollView!
-
     var imageArray = MyVariables.logoImages;
+    
+    @IBOutlet weak var lblSortBy: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        lblSortBy.text = MyVariables.DisplaySortLbl;
         
         for i in 0..<imageArray.count{
             let imageView = UIImageView()
@@ -29,11 +31,10 @@ class AndyDisplay: UIViewController {
             mainScrollView.addSubview(imageView)
         }
         
-        let view70 = MyVariables.AndyImg;
-        TestView.image = view70;
+        //let view70 = MyVariables.AndyImg;
+        //TestView.image = view70;
     }
     
-    @IBOutlet weak var TestView: UIImageView!
     
     /*
     // MARK: - Navigation

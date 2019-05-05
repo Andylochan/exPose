@@ -18,10 +18,12 @@ struct MyVariables {
     static var ISOTest1 = 0;
     static var ShutterTest1 = 0.0;
     static var ModelTest1 = "";
-    static var ImgTest1 = UIImage(); //Selected Image
+    static var DisplaySortLbl = ""; //Used in AndyDisplay.swift
     
+    static var ImgTest1 = UIImage(); //Selected Image
     static var AndyImg = UIImage(); //Tester Variable
     static var logoImages: [UIImage] = []; //Tester Variable
+    
     //static var photoTableGlobal = Table("");
     //Insert into SQL DB one by one
     
@@ -44,6 +46,7 @@ extension UIImage { //yourImage.toString() >>> Convert UIImage to String
     }
 }
 
+//TODO: Fix Segues from Sort to ScrollDisplay , change Import UIBackSplash.
 class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var database: Connection!; //Stored locally on the users device
@@ -97,6 +100,7 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         do {
             try self.database.run(photoTable.drop(ifExists: true))
             print("Deleted Previous Table")
+            MyVariables.logoImages = []; //Reset Array
         } catch {
             print(error)
         }
@@ -110,7 +114,6 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             for photo in photos {
                 print("id: \(photo[self.id]), fstop: \(photo[self.fstop]), iso: \(photo[self.iso]) , shutter: \(photo[self.shutter]) , model: \(photo[self.model])")
                 // photoSTORED: \(String(describing: photo[self.photoSTORED])), //before fstop ^^^ Causes program to hang up due to long string
-                
             }
         } catch {
             print(error)
@@ -121,12 +124,14 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     //SORTING CALLS from SortByTile
     @IBAction func listISO(_ sender: UIButton) {
         print("ORDER by ISO Tapped on SortVC")
-        var isoArray: [UIImage] = [];
+        var isoArray: [UIImage] = []; //Decoder array
+        MyVariables.DisplaySortLbl = "Sorted by ISO: "
         do {
             let photos = try self.database.prepare(self.photoTable.order(self.iso)) //ORDER BY ISO
             for photo in photos {
                 print("id: \(photo[self.id]), fstop: \(photo[self.fstop]), iso: \(photo[self.iso]) , shutter: \(photo[self.shutter]) , model: \(photo[self.model])")
                 
+                //SORT DECODER, make sure to create a local Array above "do"
                 let AndyDecoded = photo[self.photoSTORED].toImage();
                 if (AndyDecoded != nil){ //Debugging
                     print ("Decoded >> Not Nil ")
@@ -134,26 +139,55 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                     print ("False, Decoded is Nil")
                 }
                 isoArray.append(AndyDecoded!);
-                MyVariables.logoImages = isoArray;
+                MyVariables.logoImages = isoArray; //Change to SortType, aka the localized Array
                 print("ImageArray(ISO) Count:", MyVariables.logoImages.count);//Debugging
-                
+                //SORT DECODER END
             } } catch { print(error) }
         
     }
     @IBAction func listAperture(_ sender: UIButton) {
         print("ORDER by Aperture Tapped on SortVC")
+        var apertureArray: [UIImage] = []; //Decoder array
+        MyVariables.DisplaySortLbl = "Sorted by Aperture: "
         do {
             let photos = try self.database.prepare(self.photoTable.order(self.fstop)) //ORDER BY Fstop
             for photo in photos {
                 print("id: \(photo[self.id]), fstop: \(photo[self.fstop]), iso: \(photo[self.iso]) , shutter: \(photo[self.shutter]) , model: \(photo[self.model])")
+                
+                //Aperture DECODER, make sure to create a local Array above "do"
+                let AndyDecoded = photo[self.photoSTORED].toImage();
+                if (AndyDecoded != nil){ //Debugging
+                    print ("Decoded >> Not Nil ")
+                } else {
+                    print ("False, Decoded is Nil")
+                }
+                apertureArray.append(AndyDecoded!);
+                MyVariables.logoImages = apertureArray; //Change to SortType, aka the localized Array
+                print("ImageArray(Aperture) Count:", MyVariables.logoImages.count);//Debugging
+                //SORT DECODER END
             } } catch { print(error) }
     }
     @IBAction func listShutter(_ sender: UIButton) {
         print("ORDER by Shutter Tapped on SortVC")
+        var shutterArray: [UIImage] = []; //Decoder array
+        MyVariables.DisplaySortLbl = "Sorted by Shutter: "
         do {
             let photos = try self.database.prepare(self.photoTable.order(self.shutter)) //ORDER BY Shutter
             for photo in photos {
                 print("id: \(photo[self.id]), fstop: \(photo[self.fstop]), iso: \(photo[self.iso]) , shutter: \(photo[self.shutter]) , model: \(photo[self.model])")
+                
+                //Shutter DECODER, make sure to create a local Array above "do"
+                let AndyDecoded = photo[self.photoSTORED].toImage();
+                if (AndyDecoded != nil){ //Debugging
+                    print ("Decoded >> Not Nil ")
+                } else {
+                    print ("False, Decoded is Nil")
+                }
+                shutterArray.append(AndyDecoded!);
+                MyVariables.logoImages = shutterArray; //Change to SortType, aka the localized Array
+                print("ImageArray(Shutter) Count:", MyVariables.logoImages.count);//Debugging
+                //SORT DECODER END
+                
             } } catch { print(error) }
     }
     
@@ -199,7 +233,6 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         {
             imageView.image = image;
             MyVariables.ImgTest1 = image;
-            //MyVariables.photoTableGlobal = photoTable; //Make photoTable usable by SortByTile //CAUSES THE PROGRAM TO SLOW DOWN
         }
         else
         {
@@ -266,7 +299,7 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                 //Decode ************************************Needs to be moved to a list function*******************
                 let AndyDecoded = AndyEncoded?.toImage();
                 if (AndyDecoded != nil){ //Debugging
-                    print ("Decoded >> Not Nil ")
+                    print ("Dc >> N N ") //Decoded >> Not Nil
                 } else {
                     print ("False, Decoded is Nil")
                 }
