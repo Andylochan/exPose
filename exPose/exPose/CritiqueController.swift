@@ -37,7 +37,7 @@ class CritiqueController: UIViewController {
     
     @IBOutlet weak var ScreenView: UIImageView!
     
-    @IBOutlet weak var sampleText: UILabel!
+    @IBOutlet weak var critique: UILabel!
     
     /*
     // MARK: - Navigation
