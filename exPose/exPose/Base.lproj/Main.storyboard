@@ -53,7 +53,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-29" y="88"/>
+            <point key="canvasLocation" x="-171" y="88"/>
         </scene>
         <!--Page2-->
         <scene sceneID="VNt-gl-G44">
@@ -101,7 +101,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1207" y="175"/>
+            <point key="canvasLocation" x="1086" y="88"/>
         </scene>
         <!--Page4-->
         <scene sceneID="qK9-BM-597">
@@ -111,38 +111,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLn-9M-GqT">
-                                <rect key="frame" x="25" y="62" width="71" height="36"/>
-                                <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NewImportScreen2x" translatesAutoresizingMaskIntoConstraints="NO" id="0f4-QM-hW9" userLabel="BgImage">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLn-9M-GqT">
+                                <rect key="frame" x="364" y="53" width="30" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="&lt;- Back"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="partialCurl" id="q3v-Hr-edP"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-Nh-hKW">
-                                <rect key="frame" x="50" y="106" width="314" height="619"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-Nh-hKW">
+                                <rect key="frame" x="0.0" y="97" width="414" height="699"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jaq-Pr-57F">
-                                <rect key="frame" x="50" y="754" width="314" height="50"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="314" id="JSY-YE-ueU"/>
-                                    <constraint firstAttribute="height" constant="50" id="Pb5-Oe-fDC"/>
-                                </constraints>
-                                <state key="normal" title="Upload"/>
-                                <connections>
-                                    <action selector="loadImageButtonTapped:" destination="pgK-mU-huY" eventType="touchUpInside" id="XFO-qa-n29"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G71-Ym-2e3">
-                                <rect key="frame" x="281" y="823" width="83" height="30"/>
-                                <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="83" id="ash-K1-Njp"/>
-                                    <constraint firstAttribute="height" constant="30" id="znJ-Zc-4N7"/>
-                                </constraints>
-                                <state key="normal" title="List DB">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G71-Ym-2e3">
+                                <rect key="frame" x="98" y="832" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -150,36 +138,32 @@
                                     <action selector="listDB:" destination="pgK-mU-huY" eventType="touchUpInside" id="kzO-MB-aun"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBc-qQ-1fP">
-                                <rect key="frame" x="50" y="823" width="70" height="30"/>
-                                <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="0fb-bu-0Aw"/>
-                                    <constraint firstAttribute="width" constant="70" id="PxV-QE-ke7"/>
-                                </constraints>
-                                <state key="normal" title="RESET DB">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBc-qQ-1fP">
+                                <rect key="frame" x="14" y="832" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
                                     <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetDB:" destination="pgK-mU-huY" eventType="touchUpInside" id="IMZ-92-SP0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55g-mY-244">
+                                <rect key="frame" x="319" y="56" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="684-3g-EPa" kind="presentation" id="n4A-Oe-v5B"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jaq-Pr-57F">
+                                <rect key="frame" x="333" y="809" width="66" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="loadImageButtonTapped:" destination="pgK-mU-huY" eventType="touchUpInside" id="XFO-qa-n29"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="G71-Ym-2e3" firstAttribute="leading" secondItem="aBc-qQ-1fP" secondAttribute="trailing" constant="161" id="1x9-r2-cea"/>
-                            <constraint firstItem="Jaq-Pr-57F" firstAttribute="top" secondItem="QUg-Nh-hKW" secondAttribute="bottom" constant="29" id="2ip-Uj-ilX"/>
-                            <constraint firstItem="bvS-7A-Erh" firstAttribute="bottom" secondItem="G71-Ym-2e3" secondAttribute="bottom" constant="9" id="5Hf-jO-eGY"/>
-                            <constraint firstItem="QUg-Nh-hKW" firstAttribute="leading" secondItem="bvS-7A-Erh" secondAttribute="leading" constant="50" id="6VT-TB-Gwe"/>
-                            <constraint firstItem="RLn-9M-GqT" firstAttribute="leading" secondItem="bvS-7A-Erh" secondAttribute="leading" constant="25" id="QwS-7r-c7I"/>
-                            <constraint firstItem="bvS-7A-Erh" firstAttribute="bottom" secondItem="Jaq-Pr-57F" secondAttribute="bottom" constant="58" id="W50-5E-dEE"/>
-                            <constraint firstItem="bvS-7A-Erh" firstAttribute="bottom" secondItem="aBc-qQ-1fP" secondAttribute="bottom" constant="9" id="Wno-DK-6tc"/>
-                            <constraint firstItem="QUg-Nh-hKW" firstAttribute="centerX" secondItem="Q49-I0-Iiq" secondAttribute="centerX" id="XA1-RI-gQx"/>
-                            <constraint firstItem="QUg-Nh-hKW" firstAttribute="leading" secondItem="Jaq-Pr-57F" secondAttribute="leading" id="baT-Ah-be7"/>
-                            <constraint firstItem="QUg-Nh-hKW" firstAttribute="top" secondItem="RLn-9M-GqT" secondAttribute="bottom" constant="8" symbolic="YES" id="ecm-Fp-B3A"/>
-                            <constraint firstItem="RLn-9M-GqT" firstAttribute="top" secondItem="bvS-7A-Erh" secondAttribute="top" constant="18" id="mWb-KT-8Wi"/>
-                            <constraint firstItem="aBc-qQ-1fP" firstAttribute="leading" secondItem="bvS-7A-Erh" secondAttribute="leading" constant="50" id="pmy-ak-sco"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bvS-7A-Erh"/>
                     </view>
                     <connections>
@@ -188,7 +172,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xaj-Mc-ENa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30.434782608695656" y="1757.8125"/>
+            <point key="canvasLocation" x="-171.01449275362319" y="1757.8125"/>
+        </scene>
+        <!--Andy Display-->
+        <scene sceneID="1cX-fI-iQZ">
+            <objects>
+                <viewController id="684-3g-EPa" customClass="AndyDisplay" customModule="exPose" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Aa2-2z-mg8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NewSortScrnBG" translatesAutoresizingMaskIntoConstraints="NO" id="1GY-mA-une" userLabel="BgImage">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pb9-S9-QDZ">
+                                <rect key="frame" x="328" y="53" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="qGP-my-tqd" kind="presentation" id="gjU-aO-2HF"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="357-sh-QeM">
+                                <rect key="frame" x="0.0" y="113" width="414" height="749"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yv6-j6-0oQ" userLabel="Back">
+                                <rect key="frame" x="364" y="53" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="tIn-gq-dHx" kind="presentation" id="I4D-By-heK"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sort by ______ : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwE-wr-Jzp">
+                                <rect key="frame" x="17" y="53" width="288" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0VT-PZ-NZY"/>
+                    </view>
+                    <connections>
+                        <outlet property="lblSortBy" destination="FwE-wr-Jzp" id="AJe-Pd-rSq"/>
+                        <outlet property="mainScrollView" destination="357-sh-QeM" id="Pat-94-VCA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qxt-hB-PiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085.5072463768117" y="1757.8125"/>
         </scene>
         <!--Page4-->
         <scene sceneID="OcN-4Q-RlZ">
@@ -216,6 +250,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="listISO:" destination="qGP-my-tqd" eventType="touchUpInside" id="hfg-uU-0S2"/>
+                                    <segue destination="684-3g-EPa" kind="presentation" id="EXr-PT-WB6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xiu-mu-TFp" userLabel="Apabtn">
@@ -223,6 +258,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="listAperture:" destination="qGP-my-tqd" eventType="touchUpInside" id="DwD-DN-5TT"/>
+                                    <segue destination="684-3g-EPa" kind="presentation" id="Bkn-bq-afp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRv-o5-HoF" userLabel="ShuBtn">
@@ -230,6 +266,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="listShutter:" destination="qGP-my-tqd" eventType="touchUpInside" id="Byg-b0-KuP"/>
+                                    <segue destination="684-3g-EPa" kind="presentation" id="7Eu-UK-8mn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -247,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KMI-Tn-4t1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1085.5072463768117" y="1038.6160714285713"/>
+            <point key="canvasLocation" x="1086" y="930"/>
         </scene>
         <!--Page3-->
         <scene sceneID="73T-vr-Vpa">
@@ -296,7 +333,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2482.608695652174" y="55.580357142857139"/>
+            <point key="canvasLocation" x="2483" y="88"/>
         </scene>
         <!--Meta Data Screen-->
         <scene sceneID="jjd-da-Yz1">
@@ -395,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djM-sg-5fr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3812" y="1759"/>
+            <point key="canvasLocation" x="3812" y="1758"/>
         </scene>
         <!--Critique Controller-->
         <scene sceneID="C9y-W8-6iG">
@@ -438,7 +475,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZE-FO-Cbe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2482.608695652174" y="983.70535714285711"/>
+            <point key="canvasLocation" x="2483" y="1758"/>
         </scene>
         <!--Analyze Screen-->
         <scene sceneID="JB8-gv-RH6">
@@ -496,12 +533,14 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3811.594202898551" y="-662.27678571428567"/>
+            <point key="canvasLocation" x="3812" y="88"/>
         </scene>
     </scenes>
     <resources>
         <image name="ImportScr" width="414" height="896"/>
         <image name="MetaDataFat" width="250" height="436"/>
+        <image name="NewImportScreen2x" width="414" height="896"/>
+        <image name="NewSortScrnBG" width="414" height="896"/>
         <image name="SortBlocks" width="414" height="853"/>
         <image name="XR Analyze COPY" width="414" height="896"/>
         <image name="XR Critque CFix" width="500" height="1082"/>
@@ -509,10 +548,11 @@
         <image name="improveScreen" width="500" height="817"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xuK-8Y-Rny"/>
         <segue reference="YXe-Ms-tgV"/>
         <segue reference="u3t-4A-BPt"/>
-        <segue reference="Ses-Sb-1kT"/>
+        <segue reference="gjU-aO-2HF"/>
+        <segue reference="n4A-Oe-v5B"/>
+        <segue reference="I4D-By-heK"/>
         <segue reference="q3v-Hr-edP"/>
     </inferredMetricsTieBreakers>
 </document>
