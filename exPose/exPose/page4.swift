@@ -10,6 +10,7 @@ import UIKit
 import Photos
 import PhotosUI
 import SQLite
+import Clarifai_Apple_SDK
 
 //Global Variables
 struct MyVariables {
@@ -28,6 +29,8 @@ struct MyVariables {
     //Insert into SQL DB one by one
     
     //Add Clarifai variables for comparison
+    static var landscapeHighQuality = 0.0; //greater than 0.7 is good quality
+    static var focusValue = 0.0; //focus of overall image: 1 implies 100% confidence that there is an in-focus region within the image
 }
 
 extension String { //yourString.toImage() >>> Convert String to UIImage
@@ -233,12 +236,52 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         {
             imageView.image = image;
             MyVariables.ImgTest1 = image;
+            var instanceOfClarifaiObject: ClarifaiObject = ClarifaiObject()
+            //instanceOfClarifaiModel.someProperty = "Hello World"
+            //print(instanceOfClarifaiModel.someProperty)
+            instanceOfClarifaiObject.someMethod(image)
         }
         else
         {
             print("Error in func imagePickerController()"); //Error message
         }
         self.dismiss(animated: true, completion: nil)
+        
+        
+        
+        // CLARIFAI THINGS
+        
+        
+        var model: Model!
+        var concepts: [Concept] = []
+        
+        model = Clarifai.sharedInstance().generalModel
+        
+        concepts.removeAll()
+        
+        let image = Image(image: self.imageView.image)
+        
+        let dataAsset = DataAsset.init(image: image)
+        let input = Input.init(dataAsset:dataAsset)
+        let inputs = [input]
+        model.predict(inputs, completionHandler: {(outputs: [Output]?,error: Error?) -> Void in
+            // Iterate through outputs to learn about what has been predicted
+            for output in outputs! {
+                // Do something with your outputs
+                // In the sample code below the output concepts are being added to an array to be displayed.
+                //concepts.append(contentsOf: output.dataAsset.concepts!)
+                
+                let concepts = output.dataAsset.concepts
+                print(concepts?.count)
+                for concept in concepts! {
+                    print(concept.name, concept.score)
+                    //subjects.append(concept.name)
+                }
+                
+                print("done")  //Done is printed
+            }
+            print("done2") //Done is printed
+        })
         
         
         
