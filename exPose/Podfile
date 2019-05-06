@@ -8,6 +8,11 @@ target 'exPose' do
   # Pods for exPose
 
   pod 'SQLite.swift', '~> 0.11.6'
+  
+  pod 'Clarifai-Apple-SDK', '~> 3.0.0'
+  
+  pod 'Clarifai'
+
 
   target 'exPoseTests' do
     inherit! :search_paths
