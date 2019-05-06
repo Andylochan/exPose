@@ -31,6 +31,11 @@
                 NSLog(@"tag: %@", concept.conceptName);
                 NSLog(@"probability: %f", concept.score);
             }
+            //ClarifaiOutput *output = outputs[0];
+            //if (concept.conceptName == @"people") {
+                //portrait quality model
+            //}
+            
             /*
              if (!error) {
              ClarifaiOutput *output = outputs[0];
@@ -50,7 +55,8 @@
     //color model
     [app getModelByID:@"eeed0b6733a644cea07cf4c60f87ebb7" completion:^(ClarifaiModel *model, NSError *error) {
         [model predictOnImages:@[image] completion:^(NSArray<ClarifaiOutput *> *outputs, NSError *error) {
-            NSLog(@"Color outputs: %@", outputs);
+                ClarifaiOutput *output = outputs[0];
+                NSLog(@"Color outputs: %@", output);
             for (ClarifaiConcept *concept in outputs[0].concepts) {
                 NSLog(@"tag: %@", concept.conceptName);
                 NSLog(@"probability: %f", concept.score);
@@ -69,8 +75,18 @@
         }];
     }];
     
+    //portrait quality model
+    [app getModelByID:@"de9bd05cfdbf4534af151beb2a5d0953" completion:^(ClarifaiModel *model, NSError *error) {
+        [model predictOnImages:@[image] completion:^(NSArray<ClarifaiOutput *> *outputs, NSError *error) {
+            //NSLog(@"outputs: %@", outputs);
+            for (ClarifaiConcept *concept in outputs[0].concepts) {
+                NSLog(@"tag: %@", concept.conceptName);
+                NSLog(@"probability: %f", concept.score);
+            }
+        }];
+    }];
+    
     //focus model
-    //ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/focus.jpg"];
     [app getModelByID:@"c2cf7cecd8a6427da375b9f35fcd2381" completion:^(ClarifaiModel *model, NSError *error) {
         [model predictOnImages:@[image]
                     completion:^(NSArray<ClarifaiSearchResult *> *outputs, NSError *error) {

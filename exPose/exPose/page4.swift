@@ -24,6 +24,8 @@ struct MyVariables {
     //Insert into SQL DB one by one
     
     //Add Clarifai variables for comparison
+    static var landscapeHighQuality = 0.0; //greater than 0.7 is good quality 
+    static var focusValue = 0.0; //focus of overall image: 1 implies 100% confidence that there is an in-focus region within the image
 }
 
 class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
