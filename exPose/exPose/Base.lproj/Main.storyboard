@@ -304,7 +304,7 @@
                                 <rect key="frame" x="0.0" y="590" width="414" height="272"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="Uka-Wk-rvG" kind="presentation" modalTransitionStyle="coverVertical" id="v6P-D3-JkS"/>
+                                    <segue destination="cnX-NO-PEC" kind="presentation" id="QkU-Y3-S7z"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -434,6 +434,49 @@
             </objects>
             <point key="canvasLocation" x="3812" y="1758"/>
         </scene>
+        <!--New Critique-->
+        <scene sceneID="dVV-z7-rJR">
+            <objects>
+                <viewController id="cnX-NO-PEC" customClass="NewCritique" customModule="exPose" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="28e-ej-34h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UNG-xU-Lnf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="463"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="improveScreen" translatesAutoresizingMaskIntoConstraints="NO" id="dKA-09-t0M">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGB-oC-Vsv">
+                                <rect key="frame" x="186" y="540" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U95-tP-22w">
+                                <rect key="frame" x="62" y="107" width="29" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="Nyy-lY-Yor" kind="presentation" id="FjS-LP-tZE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="uj8-KM-ybv"/>
+                    </view>
+                    <connections>
+                        <outlet property="ScreenView" destination="UNG-xU-Lnf" id="L0i-3U-PFr"/>
+                        <outlet property="critique" destination="DGB-oC-Vsv" id="sXi-Ey-MQh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yU2-EX-qEy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3112" y="977"/>
+        </scene>
         <!--Critique Controller-->
         <scene sceneID="C9y-W8-6iG">
             <objects>
@@ -475,7 +518,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZE-FO-Cbe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2483" y="1758"/>
+            <point key="canvasLocation" x="2483" y="2218"/>
         </scene>
         <!--Analyze Screen-->
         <scene sceneID="JB8-gv-RH6">
@@ -548,7 +591,7 @@
         <image name="improveScreen" width="500" height="817"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YXe-Ms-tgV"/>
+        <segue reference="OyF-YC-eQy"/>
         <segue reference="u3t-4A-BPt"/>
         <segue reference="gjU-aO-2HF"/>
         <segue reference="n4A-Oe-v5B"/>
