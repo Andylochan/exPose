@@ -29,8 +29,9 @@ struct MyVariables {
     //Insert into SQL DB one by one
     
     //Add Clarifai variables for comparison
-    //static var landscapeHighQuality = 0.0; //greater than 0.7 is good quality
-    //static var focusValue = 0.0; //focus of overall image: 1 implies 100% confidence that there is an in-focus region within the image
+    static var highQuality = 0.0; //greater than 0.7 is good quality
+    static var lowQuality = 0.0;
+    static var focusValue = 0.0; //focus of overall image: 1 implies 100% confidence that there is an in-focus region within the image
 }
 
 extension String { //yourString.toImage() >>> Convert String to UIImage
@@ -248,6 +249,38 @@ class page4: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         self.dismiss(animated: true, completion: nil)
         
         
+        
+        if let path = Bundle.main.path(forResource: "ClarifaiData", ofType: "txt") {
+            do {
+                let data = try String(contentsOfFile: path, encoding: .utf8)
+                print(data)
+                //let myStrings = data.components(separatedBy: .newlines)
+                //TextView.text = myStrings.joined(separator: ", ")
+                // Split the file into separate lines
+                
+                let lines = data.split(separator:",")
+                /*
+                print(lines[0])
+                print(lines[1])
+                print(lines[2])
+                let line1 = lines[0].split(separator:":")
+                //MyVariables.highQuality = Double(line1[2])
+                let line2 = lines[1].split(separator:":")
+                //MyVariables.lowQuality = Double(line1[2])
+                let line3 = lines[2].split(separator:":")
+                */
+                //MyVariables.focusValue = Double(line1[2])
+                // Iterate over each line and print the line
+                
+                for line in lines {
+                    print("\(line)")
+                    //let eachLine = data.split(separator:":")
+                    //print (eachLine)
+                } 
+            } catch {
+                print(error)
+            }
+        }
         
         // CLARIFAI THINGS
         

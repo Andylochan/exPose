@@ -20,7 +20,7 @@
     //@property (strong, nonatomic) id someProperty;
     
 - (void) SomeMethod:(UIImage * )img;
-    
+
     @end
 
 #endif /* UseClarifai_h */

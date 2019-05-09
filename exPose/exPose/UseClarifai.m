@@ -23,6 +23,17 @@
     
     ClarifaiImage *image = [[ClarifaiImage alloc] initWithImage:img];
     
+    //__block NSString *myString;
+    __block NSMutableString *quality = [[NSMutableString alloc]init];
+    //__block NSMutableString *focus = [[NSMutableString alloc]init];
+    //__block NSString *str3;
+    
+    //write to file
+    NSString *str = @"";
+    [str writeToFile:@"/Users/aliceg/exPose4/exPose/exPose/exPose/ClarifaiData.txt" atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:@"/Users/aliceg/exPose4/exPose/exPose/exPose/ClarifaiData.txt"];
+     
     //general model
     [app getModelByName:@"general-v1.3" completion:^(ClarifaiModel *model, NSError *error) {
         [model predictOnImages:@[image] completion:^(NSArray<ClarifaiOutput *> *outputs, NSError *error) {
@@ -65,10 +76,14 @@
             for (ClarifaiConcept *concept in outputs[0].concepts) {
                 NSLog(@"tag: %@", concept.conceptName);
                 NSLog(@"probability: %f", concept.score);
+                float currentTagScore = concept.score;
+                NSString *currentTag = concept.conceptName;
+                [quality appendString:[NSString stringWithFormat:@"%@: %f, ", currentTag, currentTagScore]];
             }
+            //[str2 writeToFile:@"/Users/aliceg/exPose4/exPose/exPose/exPose/ClarifaiData.txt" atomically:YES encoding:NSUTF8StringEncoding error:nil];
         }];
     }];
-    
+
     //focus model
     //ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/focus.jpg"];
     [app getModelByID:@"c2cf7cecd8a6427da375b9f35fcd2381" completion:^(ClarifaiModel *model, NSError *error) {
@@ -77,15 +92,27 @@
                         // Cast each output to be ClarifaiOutputFocus type. Each detected region will have cooresponding focus density.
                         if ([outputs[0] isKindOfClass:[ClarifaiOutputFocus class]]) {
                             NSLog(@"Focus density: %f", ((ClarifaiOutputFocus *)outputs[0]).focusDensity);
+                            double focusVal = ((ClarifaiOutputFocus *)outputs[0]).focusDensity;
+                            //[[NSNumber numberWithFloat:] stringValue];
+                            [quality appendString:[NSString stringWithFormat:@"focus value: %f, ", focusVal]];
                             for (ClarifaiOutputRegion *box in ((ClarifaiOutputFocus *)outputs[0]).focusRegions) {
                                 NSLog(@"boundingBox: %f, %f, %f, %f", box.top, box.left, box.bottom, box.right);
                                 NSLog(@"focus density of region: %f", box.focusDensity);
                             }
                         }
+                        if (fileHandle){
+                            [fileHandle seekToEndOfFile];
+                            [fileHandle writeData:[quality dataUsingEncoding:NSUTF8StringEncoding]];
+                            [fileHandle closeFile];
+                        }
                     }];
     }];
     
+    //str3 = @"sample";
+    //str2 = 0.94763683;
+    //NSString *myString = [[NSNumber numberWithFloat:str2] stringValue];
+    //NSString *finalString = [NSString stringWithFormat:@"%@/%@/%@", str, str2, str3];
+    //[finalString writeToFile:@"/Users/aliceg/exPose4/exPose/exPose/exPose/ClarifaiData.txt" atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
 }
-    
     @end

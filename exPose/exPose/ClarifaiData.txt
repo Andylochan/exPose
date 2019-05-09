@@ -1,0 +1,1 @@
+high quality: 0.793871, low quality: 0.153852, focus value: 0.949000, 
