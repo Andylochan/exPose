@@ -17,6 +17,7 @@ class NewCritique: UIViewController {
         ScreenView.image = view1;
         
         let sample = "This is a high quality photo! It has an overall focus value of 0.949. It would make a good print or content for social media."
+        
         critique.text!  = sample;
 
         // Do any additional setup after loading the view.
